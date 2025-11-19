@@ -3,74 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Website</title>
+    <title>My Personal Portfolio</title>
     <style>
+        /* --- General Styles --- */
+        html {
+            scroll-behavior: smooth; /* This makes the jump smooth instead of instant */
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f9f9f9;
             color: #333;
         }
-        header {
+
+        /* --- Navigation Bar --- */
+        nav {
             background: #333;
             color: #fff;
-            padding: 1rem 0;
-            text-align: center;
+            position: sticky; /* Keeps nav at the top when scrolling */
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Allows menu to wrap on mobile screens */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 0;
+        }
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+            color: #4caf50; /* Highlights the link in green on hover */
+        }
+
+        /* --- Main Content Layout --- */
         .container {
-            width: 80%;
+            max-width: 900px;
             margin: auto;
-            overflow: hidden;
             padding: 20px;
             background: white;
             margin-top: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
         }
-        footer {
+
+        /* --- Sections --- */
+        section {
+            padding: 40px 0; /* Adds space above/below each section */
+            border-bottom: 1px solid #eee;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        h2 {
+            border-left: 5px solid #4caf50;
+            padding-left: 10px;
+        }
+        
+        /* --- Specific Styles --- */
+        .header-section {
             text-align: center;
-            padding: 20px;
-            margin-top: 20px;
-            color: #666;
+            padding: 60px 0;
+            background: #2c3e50;
+            color: white;
         }
-        .btn {
-            display: inline-block;
-            background: #333;
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
+        .header-section h1 {
+            color: white;
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .contact-info {
+            background: #e8f5e9;
+            padding: 15px;
             border-radius: 5px;
-            margin-top: 10px;
-        }
-        .btn:hover {
-            background: #555;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Hello, World!</h1>
-    </header>
-
-    <div class="container">
-        <h2>About Me</h2>
-        <p>Welcome to my personal website hosted on GitHub Pages. This is a great place to showcase my projects and skills.</p>
-        
-        <h2>My Projects</h2>
+    <!-- NAVIGATION BAR -->
+    <nav>
         <ul>
-            <li>Project 1: A cool web app</li>
-            <li>Project 2: A data science script</li>
-            <li>Project 3: A mobile game</li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#bio">Bio</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#highlights">Highlights</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#academic-exp">Academic Exp.</a></li>
+            <li><a href="#honors">Honors</a></li>
+            <li><a href="#languages">Languages</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
-        
-        <a href="https://github.com/yourusername" class="btn">Visit my GitHub Profile</a>
+    </nav>
+
+    <!-- HEADER / INTRO -->
+    <div class="header-section">
+        <h1>Your Name Here</h1>
+        <p>Your Professional Title (e.g., Data Scientist | Web Developer)</p>
     </div>
 
-    <footer>
-        <p>Copyright &copy; 2025</p>
+    <div class="container">
+        
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <h2>About</h2>
+            <p>Write a brief introduction about yourself here. What are your main interests? What is your professional focus?</p>
+        </section>
+
+        <!-- BIO SECTION -->
+        <section id="bio">
+            <h2>Bio</h2>
+            <p>A slightly longer narrative about your background, where you are from, and your journey.</p>
+        </section>
+
+        <!-- EDUCATION SECTION -->
+        <section id="education">
+            <h2>Education</h2>
+            <ul>
+                <li><strong>PhD in Subject</strong> - University Name (Year)</li>
+                <li><strong>Masters in Subject</strong> - University Name (Year)</li>
+                <li><strong>Bachelors in Subject</strong> - University Name (Year)</li>
+            </ul>
+        </section>
+
+        <!-- PUBLICATIONS SECTION -->
+        <section id="publications">
+            <h2>Publications</h2>
+            <ul>
+                <li><em>"Paper Title 1"</em>, Journal Name, 2024.</li>
+                <li><em>"Paper Title 2"</em>, Conference Proceedings, 2023.</li>
+            </ul>
+        </section>
+
+        <!-- HIGHLIGHTS SECTION -->
+        <section id="highlights">
+            <h2>Highlights</h2>
+            <p>Key achievements, media features, or major projects you want to stand out.</p>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <p><strong>Technical:</strong> Python, HTML/CSS, JavaScript, SQL</p>
+            <p><strong>Soft Skills:</strong> Project Management, Public Speaking, Leadership</p>
+        </section>
+
+        <!-- ACADEMIC EXPERIENCE SECTION -->
+        <section id="academic-exp">
+            <h2>Academic Experience</h2>
+            <p>Teaching Assistant, Research Assistant roles, or lecturing experience.</p>
+        </section>
+
+        <!-- HONORS SECTION -->
+        <section id="honors">
+            <h2>Honors & Awards</h2>
+            <ul>
+                <li>Best Researcher Award (2024)</li>
+                <li>Dean's List (2020-2022)</li>
+            </ul>
+        </section>
+
+        <!-- LANGUAGES SECTION -->
+        <section id="languages">
+            <h2>Languages</h2>
+            <ul>
+                <li>English (Fluent)</li>
+                <li>Spanish (Intermediate)</li>
+            </ul>
+        </section>
+
+        <!-- CERTIFICATES SECTION -->
+        <section id="certificates">
+            <h2>Certificates</h2>
+            <ul>
+                <li>AWS Certified Cloud Practitioner</li>
+                <li>Google Data Analytics Certificate</li>
+            </ul>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <p><strong>Email:</strong> email@example.com</p>
+                <p><strong>LinkedIn:</strong> linkedin.com/in/yourprofile</p>
+                <p><strong>GitHub:</strong> github.com/yourusername</p>
+            </div>
+        </section>
+
+    </div>
+
+    <footer style="text-align: center; padding: 20px; color: #777;">
+        <p>&copy; 2025 Your Name. Hosted on GitHub Pages.</p>
     </footer>
 
 </body>
