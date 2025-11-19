@@ -141,6 +141,55 @@
             margin-bottom: 15px; /* Space between image and text */
             box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Adds a shadow */
         }
+        /* --- Skills Grid Layout --- */
+        .skills-grid {
+            display: grid;
+            /* This creates 4 equal columns */
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 20px; /* Space between grid items */
+            padding: 20px 0;
+        }
+
+        .skill-item {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hover Effect */
+        .skill-item:hover {
+            transform: translateY(-5px); /* Moves up slightly */
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2); /* Greenish shadow */
+            border-color: #4caf50;
+        }
+
+        .skill-icon {
+            width: 50px;  /* Adjust size as needed */
+            height: 50px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        /* --- Responsive Design for Skills --- */
+        @media (max-width: 768px) {
+            .skills-grid {
+                /* Switch to 2 columns on tablets/mobile */
+                grid-template-columns: repeat(2, 1fr); 
+            }
+        }
     </style>
 </head>
 <body>
@@ -238,8 +287,63 @@
         <!-- SKILLS SECTION -->
         <section id="skills">
             <h2>Skills</h2>
-            <p><strong>Technical:</strong> Python, HTML/CSS, JavaScript, SQL</p>
-            <p><strong>Soft Skills:</strong> Project Management, Public Speaking, Leadership</p>
+            <div class="skills-grid">
+                
+                <!-- Row 1 -->
+                <div class="skill-item">
+                    <img src="statics/python.png" alt="Python" class="skill-icon">
+                    <span class="skill-name">Python</span>
+                </div>
+                <div class="skill-item">
+                    <img src="statics/c-plus.png" alt="C/C++" class="skill-icon">
+                    <span class="skill-name">C / C++</span>
+                </div>
+                <div class="skill-item">
+                    <img src="statics/stm32.png" alt="STM32" class="skill-icon">
+                    <span class="skill-name">STM32 / ARM</span>
+                </div>
+                <div class="skill-item">
+                    <img src="statics/pytorch.png" alt="PyTorch" class="skill-icon">
+                    <span class="skill-name">PyTorch</span>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="skill-item">
+                    <img src="statics/pcb.png" alt="PCB Design" class="skill-icon">
+                    <span class="skill-name">PCB Design</span>
+                </div>
+                <div class="skill-item">
+                    <img src="statics/matlab.png" alt="MATLAB" class="skill-icon">
+                    <span class="skill-name">MATLAB</span>
+                </div>
+                <div class="skill-item">
+                    <img src="statics/fpga.png" alt="Verilog/FPGA" class="skill-icon">
+                    <span class="skill-name">Verilog / FPGA</span>
+                </div>
+                <div class="skill-item">
+                    <img src="statics/iot.png" alt="IoT" class="skill-icon">
+                    <span class="skill-name">IoT Systems</span>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="skill-item">
+                    <img src="statics/linux.png" alt="Linux" class="skill-icon">
+                    <span class="skill-name">Embedded Linux</span>
+                </div>
+                <div class="skill-item">
+                    <img src="statics/git.png" alt="Git" class="skill-icon">
+                    <span class="skill-name">Git & Version Control</span>
+                </div>
+                <div class="skill-item">
+                    <img src="statics/uwb.png" alt="UWB/BLE" class="skill-icon">
+                    <span class="skill-name">UWB & BLE</span>
+                </div>
+                <div class="skill-item">
+                    <img src="statics/tensorflow.png" alt="TensorFlow" class="skill-icon">
+                    <span class="skill-name">TensorFlow</span>
+                </div>
+
+            </div>
         </section>
 
         <!-- ACADEMIC EXPERIENCE SECTION -->
