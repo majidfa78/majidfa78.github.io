@@ -101,6 +101,37 @@
             padding: 15px;
             border-radius: 5px;
         }
+        /* --- Education Section Specific Styles --- */
+        .education-list {
+            list-style: none; /* Remove default bullets */
+            padding: 0;
+        }
+
+        .education-item {
+            display: flex;       /* Aligns logo and text side-by-side */
+            align-items: flex-start; /* Aligns them at the top */
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee; /* Optional separator line */
+            padding-bottom: 15px;
+        }
+
+        .edu-logo {
+            width: 60px;         /* Fixed width for logos */
+            height: 60px;        /* Fixed height */
+            object-fit: contain; /* Keeps logo aspect ratio correct */
+            margin-right: 20px;  /* Space between logo and text */
+            flex-shrink: 0;      /* Prevents logo from shrinking on mobile */
+        }
+
+        .edu-details {
+            flex-grow: 1;
+        }
+
+        .edu-details h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+            color: #333;
+        }
         .profile-img {
             width: 150px;        /* Size of the image */
             height: 150px;
@@ -160,9 +191,34 @@
         <!-- EDUCATION SECTION -->
         <section id="education">
             <h2>Education</h2>
-            <ul>
-                <li><strong>MSc in Digital Electronics</strong> - Shahid Beheshti University (Sep 2022 - Oct 2025)</li>
-                <li><strong>BSc in Electrical Engineering - Electronics </strong> - Shahid Chamran University (Sep 2017-Jan 2022)</li>
+            <ul class="education-list">
+                
+                <!-- Item 1 -->
+                <li class="education-item">
+                    <!-- Replace 'uni1.png' with your actual file name -->
+                    <img src="statics/SBU.jpg" alt="University Logo" class="edu-logo">
+                    <div class="edu-details">
+                        <h3>MSc in Digital Electronics - Shahid Beheshti University</h3>
+                        <p><strong>Sep 2022 - Oct 2025</strong></p>
+                        <p>Thesis Title: Object detection based on spiking neural networks for auto-motive applications
+                            Thesis Grade: Full Marks
+                            Supervisor : Dr.Reza Ghaderi
+                            Advisor : Dr.Soheila Nazari</p>
+                    </div>
+                </li>
+
+                <!-- Item 2 -->
+                <li class="education-item">
+                    <!-- Replace 'uni2.png' with your actual file name -->
+                    <img src="statics/SCU.jpg" alt="University Logo" class="edu-logo">
+                    <div class="edu-details">
+                        <h3>Bsc in Electrical Engineering - Electronics - Shahid Chamran University</h3>
+                        <p><strong>Sep 2017 - Jan 2022</strong></p>
+                        <p> Final project: Implementing flight controller on ARM microcontroller
+                            Supervisor: Dr. Seyyed Sajjad Moosapour</p>
+                    </div>
+                </li>
+
             </ul>
         </section>
 
