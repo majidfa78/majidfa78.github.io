@@ -3,207 +3,353 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Majid Farajian Website</title>
+    <title>Majid Farajian | Digital Embedded System Researcher</title>
+    
+    <!-- Google Fonts: Inter for a clean, modern tech look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons (Optional but recommended) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
+        /* --- CSS Variables for Easy Theming --- */
+        :root {
+            --primary: #0f172a;       /* Deep Slate */
+            --accent: #0d9488;        /* Teal */
+            --accent-hover: #0f766e;
+            --bg-body: #f8fafc;       /* Light Gray Blue */
+            --bg-card: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --radius: 12px;
+        }
+
         /* --- General Styles --- */
         html {
-            scroll-behavior: smooth; /* This makes the jump smooth instead of instant */
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Offset for sticky nav */
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: var(--bg-body);
+            color: var(--text-main);
         }
-        p, li {
-            text-align: justify;
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; padding: 0; margin: 0; }
+        
+        /* Typography Improvements */
+        h1, h2, h3 { color: var(--primary); margin-top: 0; }
+        h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; }
+        h2 { 
+            font-size: 1.75rem; 
+            position: relative; 
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
         }
-        /* --- Navigation Bar --- */
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        p { margin-bottom: 1rem; color: var(--text-main); }
+
+        /* --- Navigation Bar (Glassmorphism) --- */
         nav {
-            background: #333;
-            color: #fff;
-            position: sticky; /* Keeps nav at the top when scrolling */
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow-md);
+        }
+        .nav-container {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .nav-logo {
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
         }
         nav ul {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap; /* Allows menu to wrap on mobile screens */
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        nav ul li {
-            margin: 0;
+            flex-wrap: wrap;
         }
         nav ul li a {
             display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 14px;
-            text-transform: uppercase;
+            color: #cbd5e1;
+            padding: 16px 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
         nav ul li a:hover {
-            background-color: #555;
-            color: #4caf50; /* Highlights the link in green on hover */
+            color: var(--accent);
         }
 
-        /* --- Main Content Layout --- */
+        /* --- Layout Container --- */
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: auto;
-            padding: 20px;
-            background: white;
-            margin-top: 20px;
-            margin-bottom: 50px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            padding: 0 20px;
         }
 
-        /* --- Sections --- */
+        /* --- Hero Section --- */
+        .header-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 80px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+        .header-content {
+            max-width: 600px;
+        }
+        .header-content h1 { color: white; margin-bottom: 10px; }
+        .header-content h2 { 
+            color: #cbd5e1; 
+            font-size: 1.25rem; 
+            font-weight: 400; 
+            border: none; /* remove h2 underline style for hero */
+        }
+        .header-content h2::after { display: none; }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* --- Sections General --- */
         section {
-            padding: 40px 0; /* Adds space above/below each section */
-            border-bottom: 1px solid #eee;
+            padding: 60px 0;
+            border-bottom: 1px solid #e2e8f0;
         }
-        h1, h2 {
-            color: #2c3e50;
+        section:last-child { border-bottom: none; }
+
+        /* --- About --- */
+        .about-text {
+            font-size: 1.05rem;
+            color: var(--text-main);
         }
-        h2 {
-            border-left: 5px solid #4caf50;
-            padding-left: 10px;
+
+        /* --- Timeline Styles (Education & Experience) --- */
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 40px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 2px;
+            height: 100%;
+            background: #e2e8f0;
+        }
+        .timeline-item:last-child::before { height: 0; } /* Stop line at last item */
+        
+        .timeline-dot {
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 5px;
+        }
+        .timeline-header h3 { margin: 0; font-size: 1.2rem; color: var(--primary); }
+        .timeline-date { 
+            font-size: 0.9rem; 
+            font-weight: 600; 
+            color: var(--accent); 
+            background: #e0f2f1;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .timeline-subtitle {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            display: block;
         }
         
-        /* --- Specific Styles --- */
-        .header-section {
-            text-align: center;
-            padding: 60px 0;
-            background: #2c3e50;
-            color: white;
-        }
-        .header-section h1 {
-            color: white;
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        .header-section h2 {
-            color: white;
-            margin: 0;
-            font-size: 1.5rem;
-        }
-        .contact-info {
-            background: #e8f5e9;
-            padding: 15px;
-            border-radius: 5px;
-        }
-        /* --- Education Section Specific Styles --- */
-        .education-list {
-            list-style: none; /* Remove default bullets */
-            padding: 0;
+        .edu-logo-small {
+            height: 30px;
+            vertical-align: middle;
+            margin-right: 10px;
         }
 
-        .education-item {
-            display: flex;       /* Aligns logo and text side-by-side */
-            align-items: flex-start; /* Aligns them at the top */
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee; /* Optional separator line */
-            padding-bottom: 15px;
+        /* --- Highlights Grid --- */
+        .highlight-box {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #f1f5f9;
+            height: 100%;
+        }
+        .highlight-title {
+            color: var(--accent);
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
-        .edu-logo {
-            width: 60px;         /* Fixed width for logos */
-            height: 60px;        /* Fixed height */
-            object-fit: contain; /* Keeps logo aspect ratio correct */
-            margin-right: 20px;  /* Space between logo and text */
-            flex-shrink: 0;      /* Prevents logo from shrinking on mobile */
-        }
-
-        .edu-details {
-            flex-grow: 1;
-        }
-
-        .edu-details h3 {
-            margin: 0 0 5px 0;
+        /* --- Skills Grid --- */
+        .skill-category-title {
+            margin-top: 40px;
             font-size: 1.1rem;
-            color: #333;
+            color: var(--text-light);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .profile-img {
-            width: 150px;        /* Size of the image */
-            height: 150px;
-            border-radius: 50%;  /* Makes it circular */
-            border: 4px solid white; /* Adds a nice border */
-            object-fit: cover;   /* Prevents the image from stretching */
-            margin-bottom: 15px; /* Space between image and text */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Adds a shadow */
+        .skill-category-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: #e2e8f0;
         }
-        /* --- Skills Grid Layout --- */
-        .skills-grid {
+        .skills-wrapper {
             display: grid;
-            /* This creates 4 equal columns */
-            grid-template-columns: repeat(4, 1fr); 
-            gap: 20px; /* Space between grid items */
-            padding: 20px 0;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
         }
-
-        .skill-item {
-            background-color: #fff;
-            border: 1px solid #e0e0e0;
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid #e2e8f0;
             border-radius: 8px;
+            padding: 15px;
             text-align: center;
-            padding: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            height: 100px;
         }
-
-        /* Hover Effect */
-        .skill-item:hover {
-            transform: translateY(-5px); /* Moves up slightly */
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2); /* Greenish shadow */
-            border-color: #4caf50;
+        .skill-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
         }
-
-        .skill-icon {
-            width: 100px;  /* Adjust size as needed */
-            height: 50px;
+        .skill-card img {
+            height: 40px;
+            width: auto;
             object-fit: contain;
             margin-bottom: 10px;
         }
-
         .skill-name {
+            font-size: 0.85rem;
             font-weight: 600;
-            color: #333;
-            font-size: 0.95rem;
-        }
-        /* --- Category Headers --- */
-        .skill-category-title {
-            width: 100%;
-            font-size: 1.2rem;
-            color: #4caf50; /* Matches your theme green */
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-top: 30px; /* Space above new category */
-            margin-bottom: 15px; /* Space below title */
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: var(--text-main);
         }
 
-        /* Remove top margin for the very first category to look cleaner */
-        .skill-category-title:first-of-type {
-            margin-top: 0;
+        /* --- Coursework Grid (Compact) --- */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
         }
-        /* --- Responsive Design for Skills --- */
+        .course-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+        .course-card.audit { border-left-color: #f59e0b; } /* Amber for Audit */
+        .course-title { font-weight: 700; font-size: 1rem; display: block; margin-bottom: 4px; }
+        .course-meta { font-size: 0.85rem; color: var(--text-light); }
+        .course-grade { float: right; color: var(--accent); font-weight: 700; }
+
+        /* --- Contact Section --- */
+        .contact-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-sm);
+            color: var(--primary);
+            font-weight: 600;
+            transition: 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+        .contact-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--primary);
+            color: #94a3b8;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+
+        /* --- Responsive --- */
         @media (max-width: 768px) {
-            .skills-grid {
-                /* Switch to 2 columns on tablets/mobile */
-                grid-template-columns: repeat(2, 1fr); 
+            .header-section {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            nav ul {
+                justify-content: center;
+            }
+            .nav-logo { display: none; } /* Hide text logo on small screens to save space */
+            .timeline-header {
+                flex-direction: column;
             }
         }
     </style>
@@ -212,530 +358,230 @@
 
     <!-- NAVIGATION BAR -->
     <nav>
-        <ul>
-            <li><a href="#about">About me</a></li>
-            <li><a href="#education">Education</a></li>
-            <!-- <li><a href="#publications">Publications</a></li> -->
-            <li><a href="#highlights">Highlights</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#academic-exp">Academic Exp.</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#honors">Honors</a></li>
-            <li><a href="#languages">Languages</a></li>
-            <li><a href="#bio">Bio</a></li>
-            <!-- <li><a href="#certificates">Certificates</a></li> -->
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">M. Farajian</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#highlights">Research</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#honors">Honors</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <!-- HEADER / INTRO -->
-    <div class="header-section">
-         <img src="statics/profile.jpg" alt="Profile Picture" class="profile-img">
-        <h1>Majid Farajian</h1>
-        <H2>Digital Embedded System Researcher</h2>
-    </div>
+    <!-- HEADER / HERO -->
+    <header class="header-section">
+        <div class="header-content">
+            <h1>Majid Farajian</h1>
+            <h2>Digital Embedded System Researcher</h2>
+            <p style="color: #cbd5e1; font-size: 1.1rem;">
+                Specializing in Neuromorphic Hardware, In-Memory Computing, and IoT Architectures. 
+                Bridging the gap between intelligent software and efficient hardware.
+            </p>
+            <div style="margin-top: 20px;">
+                <a href="#contact" style="background: var(--accent); color: white; padding: 10px 20px; border-radius: 6px; font-weight: 600;">Get in Touch</a>
+                <a href="https://github.com/majidfa78" target="_blank" style="margin-left: 15px; color: white;"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+        <img src="statics/profile.jpg" alt="Majid Farajian" class="profile-img">
+    </header>
 
     <div class="container">
         
         <!-- ABOUT SECTION -->
         <section id="about">
-            <h2>About</h2>
-            <p>Hi! I&#39;m Majid &#8209; a digital electronics researcher, embedded systems developer, and AI enthusiast who enjoys building things that sit at the intersection of hardware and intelligent software. I&#39;ve always been fascinated by how systems think, sense, and learn, and a big part of my journey has been turning those ideas into real, functional devices.<br>
-                Over the years, I&#39;ve worked on everything from low&#8209;level MCU programming and digital circuit design to neuromorphic models and deep learning applications. I love projects that combine creativity with engineering&#8209; whether it&#39;s designing a precise BLE and UWB indoor-Localization system, implementing a hardware-efficient neural network, or teaching deep learning to graduate students.<br>
-                I&#39;m currently focused on memory design, in&#8209;memory computing, and intelligent hardware architectures. My broader interests include IoT systems, indoor localization systems, long&#8209;range wireless communication, and practical AI for real-world devices. When I&#39;m not experimenting with new architectures or debugging firmware, you&#39;ll probably find me exploring new ideas in machine learning, reading about hardware innovations, or developing side projects.
-            </p> 
+            <h2>About Me</h2>
+            <div class="about-text">
+                <p>
+                    Hi! I'm Majid, a digital electronics researcher and embedded systems developer who loves building things at the intersection of hardware and AI. I am fascinated by how systems think, sense, and learn, and my journey has been dedicated to turning abstract concepts into functional devices.
+                </p>
+                <p>
+                    My expertise ranges from low-level MCU programming and digital circuit design to neuromorphic models and deep learning. I thrive on projects that combine creativity with engineering precision—whether designing BLE/UWB localization systems, implementing hardware-efficient neural networks, or teaching deep learning to graduate students.
+                </p>
+                <p>
+                    Currently, I am focused on <strong>memory design, in-memory computing, and intelligent hardware architectures</strong>. When not debugging firmware or designing architectures, I'm exploring new ML ideas or developing side projects.
+                </p>
+            </div>
         </section>
 
-        <!-- EDUCATION SECTION -->
+        <!-- EDUCATION SECTION (TIMELINE STYLE) -->
         <section id="education">
             <h2>Education</h2>
-            <ul class="education-list">
-                
-                <!-- Item 1 -->
-                <li class="education-item">
-                    <!-- Replace 'uni1.png' with your actual file name -->
-                    <img src="statics/SBU.jpg" alt="University Logo" class="edu-logo">
-                    <div class="edu-details">
-                        <h3>MSc in Digital Electronics - Shahid Beheshti University</h3>
-                        <p><strong>Sep 2022 - Oct 2025</strong></p>
-                        <p>Thesis Title: Object detection based on spiking neural networks for automotive applications<br>
-                            Thesis Grade: Full Marks<br>
-                            Supervisor : Dr.Reza Ghaderi<br>
-                            Advisor : Dr.Soheila Nazari</p>
-                    </div>
-                </li>
+            
+            <!-- Education 1 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-header">
+                    <h3><img src="statics/SBU.jpg" class="edu-logo-small" alt="SBU">M.Sc. in Digital Electronics</h3>
+                    <span class="timeline-date">Sep 2022 - Oct 2025</span>
+                </div>
+                <span class="timeline-subtitle">Shahid Beheshti University — Grade: Full Marks</span>
+                <p>
+                    <strong>Thesis:</strong> Object detection based on spiking neural networks (SNNs) for automotive applications.<br>
+                    <strong>Supervisor:</strong> Dr. Reza Ghaderi | <strong>Advisor:</strong> Dr. Soheila Nazari
+                </p>
+            </div>
 
-                <!-- Item 2 -->
-                <li class="education-item">
-                    <!-- Replace 'uni2.png' with your actual file name -->
-                    <img src="statics/SCU.jpg" alt="University Logo" class="edu-logo">
-                    <div class="edu-details">
-                        <h3>Bsc in Electrical Engineering - Electronics - Shahid Chamran University</h3>
-                        <p><strong>Sep 2017 - Jan 2022</strong></p>
-                        <p> Final project: Implementing quad-copter flight controller on STM32 ARM microcontroller<br>
-                            Supervisor: Dr. Seyyed Sajjad Moosapour</p>
-                    </div>
-                </li>
-
-            </ul>
+            <!-- Education 2 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-header">
+                    <h3><img src="statics/SCU.jpg" class="edu-logo-small" alt="SCU">B.Sc. in Electrical Engineering (Electronics)</h3>
+                    <span class="timeline-date">Sep 2017 - Jan 2022</span>
+                </div>
+                <span class="timeline-subtitle">Shahid Chamran University</span>
+                <p>
+                    <strong>Final Project:</strong> Implementing quad-copter flight controller on STM32 ARM microcontroller.<br>
+                    <strong>Supervisor:</strong> Dr. Seyyed Sajjad Moosapour
+                </p>
+            </div>
         </section>
 
-        <!-- PUBLICATIONS SECTION -->
-        <!-- <section id="publications">
-            <h2>Publications</h2>
-            <ul>
-                <li><em>"Paper Title 1"</em>, Journal Name, 2024.</li>
-                <li><em>"Paper Title 2"</em>, Conference Proceedings, 2023.</li>
-            </ul>
-        </section> -->
-
-        <!-- HIGHLIGHTS SECTION -->
+        <!-- HIGHLIGHTS SECTION (GRID) -->
         <section id="highlights">
-            <h2>Highlights</h2>
-            
-            <div class="skills-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: start;">
+            <h2>Highlights & Interests</h2>
+            <div class="skills-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
                 
-                <!-- Left Column: Research Focus (Fields of Interest) -->
-                <div style="background: #fdfdfd; padding: 20px; border-radius: 8px; border: 1px solid #eee;">
-                    <h3 style="margin-top: 0; color: #4caf50; border-bottom: 2px solid #eee; padding-bottom: 10px;">
-                        Research Focus
-                    </h3>
+                <!-- Card 1 -->
+                <div class="highlight-box">
+                    <h4 class="highlight-title">Research Focus</h4>
                     <ul style="padding-left: 20px; line-height: 1.8;">
-                        <li><strong>Hardware & Memory:</strong> Memory Design, In-Memory Computing, Neuromorphic Hardware.</li>
+                        <li><strong>Hardware:</strong> Memory Design, In-Memory Computing, Neuromorphic Hardware.</li>
                         <li><strong>AI Systems:</strong> Large Language Models (LLMs), Spiking Neural Networks (SNNs).</li>
-                        <li><strong>Wireless & IoT:</strong> Indoor Localization, Long-Range Wireless Networks.</li>
-                        <li><strong>Applications:</strong> Healthcare Devices, Industrial IoT Frameworks.</li>
+                        <li><strong>Wireless:</strong> Indoor Localization, Long-Range Wireless Networks, IoT.</li>
                     </ul>
                 </div>
 
-                <!-- Right Column: Selected Projects & Activities -->
-                <div style="background: #fdfdfd; padding: 20px; border-radius: 8px; border: 1px solid #eee;">
-                    <h3 style="margin-top: 0; color: #4caf50; border-bottom: 2px solid #eee; padding-bottom: 10px;">
-                        Key Projects & Activities
-                    </h3>
+                <!-- Card 2 -->
+                <div class="highlight-box">
+                    <h4 class="highlight-title">Key Achievements</h4>
                     <ul style="padding-left: 20px; line-height: 1.8;">
-                        <li><strong>International Collaboration:</strong> Led collaborative research on advanced digital systems and memory design targeting top-tier venues.</li>
-                        <li><strong>Industrial R&D:</strong> Developed unified IoT frameworks and indoor positioning algorithms for edge devices at <em style="color:#555;">CoolTag Company</em>.</li>
-                        <li><strong>Teaching Leadership:</strong> Instructed graduate students in Deep Learning and Generative Models at KNTU.</li>
+                        <li><strong>Collaboration:</strong> Leading research on advanced digital systems targeting top-tier venues.</li>
+                        <li><strong>Industrial R&D:</strong> Developed unified IoT frameworks & positioning algorithms at <em>CoolTag</em>.</li>
+                        <li><strong>Teaching:</strong> Instructed graduate students in Deep Learning & Generative Models at KNTU.</li>
                     </ul>
                 </div>
 
             </div>
-        </section>>
+        </section>
 
         <!-- SKILLS SECTION -->
         <section id="skills">
             <h2>Technical Skills</h2>
 
-            <!-- Category 1: Digital Electronics -->
-            <h3 class="skill-category-title">Digital Electronics and Embedded Systems</h3>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <img src="statics/FPGA.JPG" alt="FPGA" class="skill-icon">
-                    <span class="skill-name">VHDL/Verilog</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/Cadence.png" alt="Cadence" class="skill-icon">
-                    <span class="skill-name">Virtuoso</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/HSPICE.jfif" alt="HSPICE" class="skill-icon">
-                    <span class="skill-name">HSPICE</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/Altium.png" alt="Altium" class="skill-icon">
-                    <span class="skill-name">Altium Designer</span>
-                </div>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <img src="statics/arm.svg" alt="arm" class="skill-icon">
-                    <span class="skill-name">STM32/AT91/LPC17xx</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/8bitmcu.png" alt="8bit" class="skill-icon">
-                    <span class="skill-name">Atmel AVR/STM8/SILabs EFM8</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/Vivado.jpg" alt="vivado" class="skill-icon">
-                    <span class="skill-name">Xillinx Vivado</span>
-                </div>
+            <div class="skill-category-title">Digital Electronics & Embedded Systems</div>
+            <div class="skills-wrapper">
+                <div class="skill-card"><img src="statics/FPGA.JPG" alt="Icon"><span class="skill-name">VHDL/Verilog</span></div>
+                <div class="skill-card"><img src="statics/Cadence.png" alt="Icon"><span class="skill-name">Virtuoso</span></div>
+                <div class="skill-card"><img src="statics/HSPICE.jfif" alt="Icon"><span class="skill-name">HSPICE</span></div>
+                <div class="skill-card"><img src="statics/Altium.png" alt="Icon"><span class="skill-name">Altium Designer</span></div>
+                <div class="skill-card"><img src="statics/arm.svg" alt="Icon"><span class="skill-name">STM32 ARM</span></div>
+                <div class="skill-card"><img src="statics/Vivado.jpg" alt="Icon"><span class="skill-name">Xilinx Vivado</span></div>
+                <div class="skill-card"><img src="statics/8bitmcu.png" alt="Icon"><span class="skill-name">AVR / STM8</span></div>
             </div>
 
-            <!-- Category 2:Programming -->
-            <h3 class="skill-category-title">Programming</h3>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <img src="statics/python.png" alt="Python" class="skill-icon">
-                    <span class="skill-name">Python</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/C.JPG" alt="CPP" class="skill-icon">
-                    <span class="skill-name">C / C++</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/matlab.png" alt="MATLAB" class="skill-icon">
-                    <span class="skill-name">MATLAB</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/LaTeX.png" alt="LaTeX" class="skill-icon">
-                    <span class="skill-name">LaTeX</span>
-                </div>
+            <div class="skill-category-title">Programming & Software</div>
+            <div class="skills-wrapper">
+                <div class="skill-card"><img src="statics/python.png" alt="Icon"><span class="skill-name">Python</span></div>
+                <div class="skill-card"><img src="statics/C.JPG" alt="Icon"><span class="skill-name">C / C++</span></div>
+                <div class="skill-card"><img src="statics/matlab.png" alt="Icon"><span class="skill-name">MATLAB</span></div>
+                <div class="skill-card"><img src="statics/linux.png" alt="Icon"><span class="skill-name">Embedded Linux</span></div>
+                <div class="skill-card"><img src="statics/qt.svg" alt="Icon"><span class="skill-name">Qt / PyQt</span></div>
+                <div class="skill-card"><img src="statics/django.png" alt="Icon"><span class="skill-name">Django</span></div>
             </div>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <img src="statics/linux.png" alt="Linux" class="skill-icon">
-                    <span class="skill-name">Linux/Embedded Linux</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/qt.svg" alt="QT" class="skill-icon">
-                    <span class="skill-name">Qt / PyQt</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/django.png" alt="django" class="skill-icon">
-                    <span class="skill-name">Django</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/networkplus.png" alt="networkplus" class="skill-icon">
-                    <span class="skill-name">network+</span>
-                </div>
+
+            <div class="skill-category-title">Connectivity & Protocols</div>
+            <div class="skills-wrapper">
+                <div class="skill-card"><img src="statics/BLE.png" alt="Icon"><span class="skill-name">BLE</span></div>
+                <div class="skill-card"><img src="statics/UWB.png" alt="Icon"><span class="skill-name">UWB</span></div>
+                <div class="skill-card"><img src="statics/LoRaWAN.png" alt="Icon"><span class="skill-name">LoRaWAN</span></div>
+                <div class="skill-card"><img src="statics/wifi.png" alt="Icon"><span class="skill-name">WiFi / ESP</span></div>
+                <div class="skill-card"><img src="statics/gps.svg" alt="Icon"><span class="skill-name">GNSS / GPS</span></div>
             </div>
-            <!-- Category 3: Interfaces -->
-            <h3 class="skill-category-title">Communication Interfaces and Localization</h3>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <img src="statics/BLE.png" alt="BLE" class="skill-icon">
-                    <span class="skill-name">BLE</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/wifi.png" alt="wifi" class="skill-icon">
-                    <span class="skill-name">WiFi</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/UWB.png" alt="UWB" class="skill-icon">
-                    <span class="skill-name">UWB</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/HID.jpg" alt="HID" class="skill-icon">
-                    <span class="skill-name">USB HID</span>
-                </div>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <img src="statics/gps.svg" alt="gps" class="skill-icon">
-                    <span class="skill-name">GPS/GNSS</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/LoRaWAN.png" alt="LoRaWAN" class="skill-icon">
-                    <span class="skill-name">LoRaWAN</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/RS485.jpg" alt="RS485" class="skill-icon">
-                    <span class="skill-name">RS232/RS485</span>
-                </div>
-            </div>
-            <!-- Category 4: AI & Machine Learning -->
-            <h3 class="skill-category-title">AI & Machine Learning</h3>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <img src="statics/torch.png" alt="torch" class="skill-icon">
-                    <span class="skill-name">PyTorch</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/tf.png" alt="tf" class="skill-icon">
-                    <span class="skill-name">TensorFlow</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/Scikit_learn.png" alt="Scikit_learn" class="skill-icon">
-                    <span class="skill-name">Sci-kit Learn</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/OpenCV.png" alt="OpenCV" class="skill-icon">
-                    <span class="skill-name">OpenCV</span>
-                </div>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <img src="statics/keras.png" alt="keras" class="skill-icon">
-                    <span class="skill-name">Keras</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/snntorch.png" alt="snntorch" class="skill-icon">
-                    <span class="skill-name">snnTorch</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/Cuda.png" alt="cuda" class="skill-icon">
-                    <span class="skill-name">CUDA</span>
-                </div>
-            </div>
-            <h3 class="skill-category-title">CI/CD</h3>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <img src="statics/markdown.png" alt="markdown" class="skill-icon">
-                    <span class="skill-name">Markdown</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/Git.png" alt="git" class="skill-icon">
-                    <span class="skill-name">GIT</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/docker.png" alt="docker" class="skill-icon">
-                    <span class="skill-name">Docker</span>
-                </div>
-                <div class="skill-item">
-                    <img src="statics/Azure.png" alt="azure" class="skill-icon">
-                    <span class="skill-name">Azure</span>
-                </div>
+
+            <div class="skill-category-title">AI & Machine Learning</div>
+            <div class="skills-wrapper">
+                <div class="skill-card"><img src="statics/torch.png" alt="Icon"><span class="skill-name">PyTorch</span></div>
+                <div class="skill-card"><img src="statics/tf.png" alt="Icon"><span class="skill-name">TensorFlow</span></div>
+                <div class="skill-card"><img src="statics/snntorch.png" alt="Icon"><span class="skill-name">snnTorch</span></div>
+                <div class="skill-card"><img src="statics/OpenCV.png" alt="Icon"><span class="skill-name">OpenCV</span></div>
             </div>
         </section>
 
-        <!-- ACADEMIC EXPERIENCE SECTION -->
+        <!-- ACADEMIC EXPERIENCE -->
         <section id="academic-exp">
             <h2>Academic Experience</h2>
 
-            <!-- Subsection 1: Teaching Assistantships -->
-            <h3 class="skill-category-title">Teaching Assistantships</h3>
-            <ul class="education-list">
-                <li class="education-item">
-                    <!-- Use kntoosi.png for KNTU -->
-                    <img src="statics/kntu.png" alt="KNTU Logo" class="edu-logo">
-                    <div class="edu-details">
-                        <h3>Deep Generative Models (DGM)</h3>
-                        <p><strong>KNTU — Spring 2025</strong></p>
-                        <p>Graduate Instructional Assistant for Dr. Behrooz Nasihatkon.</p>
-                    </div>
-                </li>
-                <li class="education-item">
-                    <img src="statics/kntu.png" alt="KNTU Logo" class="edu-logo">
-                    <div class="edu-details">
-                        <h3>Deep Learning (DL)</h3>
-                        <p><strong>KNTU — Fall 2024</strong></p>
-                        <p>Graduate Instructional Assistant for Dr. Mahdi Aliyari-Shoorehdeli.</p>
-                    </div>
-                </li>
-            </ul>
-
-            <!-- Subsection 2: Graded Graduate Coursework -->
-            <h3 class="skill-category-title">Graded Graduate Coursework</h3>
-            <div class="skills-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-                
-                <div class="skill-item" style="align-items: flex-start; text-align: left;">
-                    <span class="skill-name" style="font-size: 1.1rem; color: #2c3e50;">VHDL</span>
-                    <p style="margin: 5px 0; font-size: 0.9rem;"><strong>Grade: 20 / 20</strong></p>
-                    <p style="margin: 0; font-size: 0.85rem; color: #666;">Shahid Beheshti University<br>Instr: Dr. Soheila Nazari</p>
+            <!-- Teaching -->
+            <h3 style="margin-bottom: 20px; font-size: 1.3rem;">Teaching Assistantships</h3>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-header">
+                    <h3>Deep Generative Models (DGM)</h3>
+                    <span class="timeline-date">Spring 2025</span>
                 </div>
-
-                <div class="skill-item" style="align-items: flex-start; text-align: left;">
-                    <span class="skill-name" style="font-size: 1.1rem; color: #2c3e50;">ASIC / FPGA Design</span>
-                    <p style="margin: 5px 0; font-size: 0.9rem;"><strong>Grade: 19.93 / 20</strong></p>
-                    <p style="margin: 0; font-size: 0.85rem; color: #666;">Shahid Beheshti University<br>Instr: Dr. Soheila Nazari</p>
+                <span class="timeline-subtitle">K.N. Toosi University of Technology (KNTU)</span>
+                <p>Graduate Instructional Assistant for Dr. Behrooz Nasihatkon.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-header">
+                    <h3>Deep Learning (DL)</h3>
+                    <span class="timeline-date">Fall 2024</span>
                 </div>
-
-                <div class="skill-item" style="align-items: flex-start; text-align: left;">
-                    <span class="skill-name" style="font-size: 1.1rem; color: #2c3e50;">Neural Networks</span>
-                    <p style="margin: 5px 0; font-size: 0.9rem;"><strong>Grade: 19.75 / 20</strong></p>
-                    <p style="margin: 0; font-size: 0.85rem; color: #666;">Shahid Beheshti University<br>Instr: Dr. Reza Ghaderi</p>
-                </div>
-
-                <div class="skill-item" style="align-items: flex-start; text-align: left;">
-                    <span class="skill-name" style="font-size: 1.1rem; color: #2c3e50;">VLSI</span>
-                    <p style="margin: 5px 0; font-size: 0.9rem;"><strong>Grade: 19.50 / 20</strong></p>
-                    <p style="margin: 0; font-size: 0.85rem; color: #666;">Shahid Beheshti University<br>Instr: Dr. M. Moaiyeri</p>
-                </div>
-
-                <div class="skill-item" style="align-items: flex-start; text-align: left;">
-                    <span class="skill-name" style="font-size: 1.1rem; color: #2c3e50;">Advanced VLSI</span>
-                    <p style="margin: 5px 0; font-size: 0.9rem;"><strong>Grade: 18.50 / 20</strong></p>
-                    <p style="margin: 0; font-size: 0.85rem; color: #666;">Shahid Beheshti University<br>Instr: Dr. M. Moaiyeri</p>
-                </div>
-
-                <div class="skill-item" style="align-items: flex-start; text-align: left;">
-                    <span class="skill-name" style="font-size: 1.1rem; color: #2c3e50;">Deep Learning</span>
-                    <p style="margin: 5px 0; font-size: 0.9rem;"><strong>Grade: 15.50 / 20</strong></p>
-                    <p style="margin: 0; font-size: 0.85rem; color: #666;">Shahid Beheshti University<br>Instr: Dr. Reza Ghaderi</p>
-                </div>
-
+                <span class="timeline-subtitle">K.N. Toosi University of Technology (KNTU)</span>
+                <p>Graduate Instructional Assistant for Dr. Mahdi Aliyari-Shoorehdeli.</p>
             </div>
 
-            <!-- Subsection 3: Extra / Audit Courses -->
-            <h3 class="skill-category-title">Audit & Extra Courses</h3>
-            <div class="skills-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-
-                <div class="skill-item" style="align-items: flex-start; text-align: left; border-left: 4px solid #ff9800;">
-                    <span class="skill-name" style="font-size: 1.1rem; color: #2c3e50;">Probabilistic Graphical Models</span>
-                    <p style="margin: 5px 0; font-size: 0.9rem;"><em>Audit Course</em></p>
-                    <p style="margin: 0; font-size: 0.85rem; color: #666;">KNTU<br>Instr: Dr. Behrooz Nasihatkon</p>
+            <!-- Grades -->
+            <h3 style="margin: 30px 0 15px; font-size: 1.3rem;">Selected Graduate Coursework</h3>
+            <div class="course-grid">
+                <div class="course-card">
+                    <span class="course-title">VHDL</span>
+                    <div class="course-meta">Dr. Soheila Nazari</div>
+                    <div class="course-grade">20 / 20</div>
                 </div>
-
-                <div class="skill-item" style="align-items: flex-start; text-align: left; border-left: 4px solid #ff9800;">
-                    <span class="skill-name" style="font-size: 1.1rem; color: #2c3e50;">Advanced Math for ML</span>
-                    <p style="margin: 5px 0; font-size: 0.9rem;"><em>Audit Course</em></p>
-                    <p style="margin: 0; font-size: 0.85rem; color: #666;">KNTU<br>Instr: Dr. Behrooz Nasihatkon</p>
+                <div class="course-card">
+                    <span class="course-title">ASIC / FPGA Design</span>
+                    <div class="course-meta">Dr. Soheila Nazari</div>
+                    <div class="course-grade">19.93 / 20</div>
                 </div>
-
-                <div class="skill-item" style="align-items: flex-start; text-align: left; border-left: 4px solid #ff9800;">
-                    <span class="skill-name" style="font-size: 1.1rem; color: #2c3e50;">Deep Generative Models</span>
-                    <p style="margin: 5px 0; font-size: 0.9rem;"><em>Extra Course</em></p>
-                    <p style="margin: 0; font-size: 0.85rem; color: #666;">Stanford University<br>Instr: Dr. Stefano Ermon</p>
+                <div class="course-card">
+                    <span class="course-title">Neural Networks</span>
+                    <div class="course-meta">Dr. Reza Ghaderi</div>
+                    <div class="course-grade">19.75 / 20</div>
                 </div>
-
+                <div class="course-card">
+                    <span class="course-title">VLSI</span>
+                    <div class="course-meta">Dr. M. Moaiyeri</div>
+                    <div class="course-grade">19.50 / 20</div>
+                </div>
+                <!-- Audits -->
+                <div class="course-card audit">
+                    <span class="course-title">Probabilistic Graphical Models</span>
+                    <div class="course-meta">Audit | KNTU</div>
+                </div>
+                <div class="course-card audit">
+                    <span class="course-title">Deep Generative Models</span>
+                    <div class="course-meta">Extra | Stanford (Online)</div>
+                </div>
             </div>
         </section>
-        <!-- WORK EXPERIENCE SECTION -->
+
+        <!-- WORK EXPERIENCE -->
         <section id="experience">
             <h2>Work Experience</h2>
-            <ul class="education-list">
-
-                <!-- Job 1: Farapayesh Amin Co (Most Recent) -->
-                <li class="education-item" style="align-items: flex-start;">
-                    <!-- Date Column -->
-                    <div style="min-width: 120px; font-weight: bold; color: #4caf50; border-right: 3px solid #eee; padding-right: 15px; margin-right: 15px; text-align: right; margin-top: 5px;">
-                        Jan 2023<br><span style="font-size:0.8rem; color:#999;">Jan 2025</span>
-                    </div>
-                    <!-- Content Column -->
-                    <div class="edu-details">
-                        <h3 style="margin: 0; font-size: 1.2rem;">Embedded Hardware Developer</h3>
-                        <p style="margin: 2px 0 10px; color: #666; font-weight: 600;">Farapayesh Amin Co. — Tehran, Iran</p>
-                        <p style="font-size: 0.95rem; margin-bottom: 10px;">
-                            Led the hardware team in researching and developing IoT-based industrial monitoring systems and offline data loggers, while ensuring operational maintenance of ERP platforms.
-                        </p>
-                        <ul style="padding-left: 20px; font-size: 0.9rem; list-style-type: disc;">
-                            <li style="margin-bottom: 8px;">
-                                <strong>CoolTag Easy:</strong> Developed firmware (Silicon-Labs SB1 MCU) and web-app (Django) for a portable NFC temperature data-logger. <a href="https://www.cooltag.ir/products/offline/cooltagbasic/" target="_blank" style="color: #4caf50; text-decoration: none;">[View Product]</a>
-                            </li>
-                            <li style="margin-bottom: 8px;">
-                                <strong>BLE Indoor Positioning:</strong> Designed algorithms and server-side implementation (Python, ThingsBoard) for a LoRaWAN tracker system using BLE beacons.
-                            </li>
-                            <li style="margin-bottom: 8px;">
-                                <strong>Fully Automated Delivery System:</strong> Architected a unified system (ERPNext, Python, SQL, MATLAB) reducing processing time from 3 months to 1 week for batches of 1,000 products.
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <!-- Job 2: University Lab -->
-                <li class="education-item" style="align-items: flex-start;">
-                    <div style="min-width: 120px; font-weight: bold; color: #4caf50; border-right: 3px solid #eee; padding-right: 15px; margin-right: 15px; text-align: right; margin-top: 5px;">
-                        Nov 2019<br><span style="font-size:0.8rem; color:#999;">Nov 2021</span>
-                    </div>
-                    <div class="edu-details">
-                        <h3 style="margin: 0; font-size: 1.2rem;">Senior Member of Industrial Control Lab</h3>
-                        <p style="margin: 2px 0 10px; color: #666; font-weight: 600;">Shahid Chamran University — Ahvaz, Iran</p>
-                        <ul style="padding-left: 20px; font-size: 0.9rem; list-style-type: disc;">
-                            <li style="margin-bottom: 8px;">
-                                <strong>Quad-Rotor Flight Controller:</strong> Circuit design and programming (Arduino Mega) utilizing GPS/IMU positioning and Barometric Altimeter.
-                            </li>
-                            <li style="margin-bottom: 8px;">
-                                <strong>PC-Controlled DC Motor:</strong> Implemented PID speed control on AVR MCU with a Java-based GUI for Windows/Linux.
-                            </li>
-                            <li style="margin-bottom: 8px;">
-                                <strong>BLDC Motor Controller:</strong> Designed MOSFET drive stages controlled by AVR, simulated in Proteus and MATLAB.
-                            </li>
-                            <li style="margin-bottom: 8px;">
-                                <strong>Elevator Control System:</strong> Prototyped using Siemens S7-300 PLC with magnetic proximity sensors.
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <!-- Job 3: Ahwaz Robotic Home -->
-                <li class="education-item" style="align-items: flex-start;">
-                    <div style="min-width: 120px; font-weight: bold; color: #4caf50; border-right: 3px solid #eee; padding-right: 15px; margin-right: 15px; text-align: right; margin-top: 5px;">
-                        May 2017<br><span style="font-size:0.8rem; color:#999;">May 2020</span>
-                    </div>
-                    <div class="edu-details">
-                        <h3 style="margin: 0; font-size: 1.2rem;">Electronic Specialist</h3>
-                        <p style="margin: 2px 0 10px; color: #666; font-weight: 600;">Ahwaz Robotic Home — Ahvaz, Iran</p>
-                        <p style="font-size: 0.95rem; margin-bottom: 10px;">
-                            Maintained robotic education platforms and developed training programs incorporating cutting-edge technologies.
-                        </p>
-                        <ul style="padding-left: 20px; font-size: 0.9rem; list-style-type: disc;">
-                            <li style="margin-bottom: 8px;">
-                                <strong>Line Follower Robots (8 & 14 Sensors):</strong> Designed PCB/Frame (Altium, SolidWorks) and programmed MCU algorithms (Arduino Uno/Mega).
-                            </li>
-                            <li style="margin-bottom: 8px;">
-                                <strong>Smart Home IoT System:</strong> Developed ESP8266-based appliance control via WiFi and Telegram Bot.
-                            </li>
-                            <li style="margin-bottom: 8px;">
-                                <strong>Security System:</strong> Built an Arduino-based entrance control system using Password and NFC authentication.
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-            </ul>
-        </section>
-        <!-- HONORS SECTION -->
-        <section id="honors">
-            <h2>Honors & Awards</h2>
-            <ul class="education-list">
-
-                <!-- Item 1 -->
-                <li class="education-item" style="align-items: center;">
-                    <div style="min-width: 120px; font-weight: bold; color: #4caf50; border-right: 3px solid #eee; padding-right: 15px; margin-right: 15px; text-align: right;">
-                        Sep 2025
-                    </div>
-                    <div class="edu-details">
-                        <h3 style="margin: 0; font-size: 1.1rem;">Eligible for Iranian National Talent Program</h3>
-                        <p style="margin: 5px 0 0; color: #666;">Qualifying with a substantial score.</p>
-                    </div>
-                </li>
-
-                <!-- Item 2 -->
-                <li class="education-item" style="align-items: center;">
-                    <div style="min-width: 120px; font-weight: bold; color: #4caf50; border-right: 3px solid #eee; padding-right: 15px; margin-right: 15px; text-align: right;">
-                        Sep 2017 & 2022
-                    </div>
-                    <div class="edu-details">
-                        <h3 style="margin: 0; font-size: 1.1rem;">Ranked Among Top 1% in National University Entrance Exam</h3>
-                        <p style="margin: 5px 0 0; color: #666;">Achieved top ranking in both B.Sc. and M.Sc. entrance exams.</p>
-                    </div>
-                </li>
-
-                <!-- Item 3 -->
-                <li class="education-item" style="align-items: center;">
-                    <div style="min-width: 120px; font-weight: bold; color: #4caf50; border-right: 3px solid #eee; padding-right: 15px; margin-right: 15px; text-align: right;">
-                        Jan 2022
-                    </div>
-                    <div class="edu-details">
-                        <h3 style="margin: 0; font-size: 1.1rem;">Among Top 3 Projects in the B.Sc. Program</h3>
-                        <p style="margin: 5px 0 0; color: #666;">Recognized for project excellence at SCU.</p>
-                    </div>
-                </li>
-
-            </ul>
-        </section>
-
-        <!-- LANGUAGES SECTION -->
-        <section id="languages">
-            <h2>Languages</h2>
-            <ul>
-                <li>English (Fluent)</li>
-                <li>Persian (Native)</li>
-            </ul>
-        </section>
-        <!-- BIO SECTION -->
-        <section id="bio">
-            <h2>Bio</h2>
-            <p>Majid Farajian, born in 1999 in Ahvaz, Iran, is a digital electronic engineer with strong experience in embedded systems, AI&#8209;focused hardware design, and indoor localization technologies. He earned his B.Sc. in Electrical Engineering&#8209;Electronics from Shahid Chamran University of Ahvaz and his M.Sc. in Digital Electronic Engineering from Shahid Beheshti University, graduating with high distinction. His master's thesis focused on object detection using spiking neural networks for automotive applications.<br>
-                Majid has over a decade of hands-on R&D experience in electronic circuit design, firmware development, IoT systems, and positioning technologies. He previously worked as a Senior Embedded Developer at CoolTag Company, contributing to indoor positioning algorithms and unified IoT frameworks. He also serves as a Graduate Instructional Assistant for advanced AI and deep learning courses at Khajeh Nasir Toosi University of Technology (KNTU). His current interests include neuromorphic hardware, memory design, in-memory computing, long-range wireless networks, and practical machine learning for real&#8209;world devices.</p>
-        </section>
-
-        <!-- CONTACT SECTION -->
-        <section id="contact">
-            <h2>Contact</h2>
-            <div class="contact-info">
-                <p><strong>Email:</strong> majidfa78@gmail.com</p>
-                <p><strong>LinkedIn:</strong> https://www.linkedin.com/in/majid-farajian-899a47297</p>
-                <p><strong>GitHub:</strong> github.com/majidfa78</p>
-            </div>
-        </section>
-
-    </div>
-
-    <footer style="text-align: center; padding: 20px; color: #777;">
-        <p>&copy; 2025 Majid Farajian. Hosted on GitHub Pages.</p>
-    </footer>
-
-</body>
-</html>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-header">
+                    <h3>Embedded Hardware Developer</h3>
+                    <span class="timeline-date">Jan 2023 - Jan 2025</span>
+                </div>
+                <span class="timeline-subtitle">Farapayesh Amin Co. (CoolTag) — Tehran, Iran</span>
+                <p>Led the hardware team in researching and developing IoT-based industrial monitoring systems.</p>
+                <ul style="font-size: 0.95rem; padding-left: 20px;">
+                    <li><strong>CoolTag Easy:</strong> Developed firmware (SiLabs SB1) and Django web-app for NFC temp data-loggers.<
