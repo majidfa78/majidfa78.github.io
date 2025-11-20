@@ -146,7 +146,6 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        /* --- Header Button --- */
         .cta-button {
             display: inline-block;
             background-color: var(--accent);
@@ -315,19 +314,47 @@
         .course-meta { font-size: 0.85rem; color: var(--text-light); }
         .grade-badge { float: right; font-weight: 700; color: var(--accent-dark); }
 
-        /* --- CONTACT SECTION REDESIGN --- */
+        /* --- LANGUAGE SECTION STYLES --- */
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .language-card {
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: var(--shadow-sm);
+            transition: 0.2s;
+        }
+        .language-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+        }
+        .lang-icon-box {
+            width: 45px;
+            height: 45px;
+            background: #ecfdf5; /* Very light green */
+            color: var(--accent-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* --- CONTACT SECTION STYLES --- */
         .contact-wrapper {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             gap: 40px;
         }
-        
-        /* Social Image Links */
-        .social-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+        .social-grid { display: flex; flex-direction: column; gap: 15px; }
         .social-card {
             display: flex;
             align-items: center;
@@ -338,11 +365,7 @@
             transition: all 0.3s ease;
             box-shadow: var(--shadow-sm);
         }
-        .social-card:hover {
-            transform: translateX(5px);
-            border-color: var(--accent);
-            box-shadow: var(--shadow-md);
-        }
+        .social-card:hover { transform: translateX(5px); border-color: var(--accent); box-shadow: var(--shadow-md); }
         .social-icon-box {
             width: 50px;
             height: 50px;
@@ -366,58 +389,25 @@
             box-shadow: var(--shadow-sm);
         }
         .form-group { margin-bottom: 20px; }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--text-main);
-        }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: var(--text-main); }
         .form-control {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 0.95rem;
-            transition: 0.2s;
-            box-sizing: border-box; /* Ensures padding doesn't overflow width */
+            width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px;
+            font-family: inherit; font-size: 0.95rem; transition: 0.2s; box-sizing: border-box;
         }
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
-        }
+        .form-control:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1); }
         .submit-btn {
-            width: 100%;
-            padding: 12px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
+            width: 100%; padding: 12px; background: var(--primary); color: white;
+            border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s;
         }
-        .submit-btn:hover {
-            background: var(--accent-dark);
-        }
+        .submit-btn:hover { background: var(--accent-dark); }
 
         /* Footer */
-        footer {
-            background: var(--primary);
-            color: #94a3b8;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 60px;
-        }
+        footer { background: var(--primary); color: #94a3b8; text-align: center; padding: 40px 20px; margin-top: 60px; }
 
         /* Responsive */
         @media (max-width: 768px) {
             .header-section { 
-                flex-direction: column-reverse; 
-                text-align: center; 
-                padding: 80px 20px 120px 20px;
+                flex-direction: column-reverse; text-align: center; padding: 80px 20px 120px 20px;
                 clip-path: polygon(0 0, 100% 0, 100% 93%, 0 100%);
             }
             .header-content h1 { font-size: 2rem; }
@@ -426,8 +416,6 @@
             nav ul { justify-content: center; }
             .timeline-header { flex-direction: column; gap: 5px; }
             .timeline-date { display: inline-block; }
-            
-            /* Contact Section Stack */
             .contact-wrapper { grid-template-columns: 1fr; }
         }
     </style>
@@ -461,7 +449,7 @@
             <p style="color: #e2e8f0; font-size: 1.1rem; margin-top: 15px;">
                 Specializing in Memory Design, In-Memory Computing, and Intelligent Hardware Architectures.
             </p>
-            <!-- ADDED: Header Button -->
+            <!-- Header Button -->
             <a href="#contact" class="cta-button">Get in Touch</a>
         </div>
         <img src="statics/profile.jpg" alt="Majid Farajian" class="profile-img">
@@ -770,10 +758,28 @@
         <!-- LANGUAGES SECTION -->
         <section id="languages">
             <h2>Languages</h2>
-            <ul style="font-size: 1.1rem; list-style: none; padding: 0;">
-                <li style="margin-bottom: 10px;"><strong>English:</strong> Fluent</li>
-                <li><strong>Persian:</strong> Native</li>
-            </ul>
+            <div class="language-grid">
+                <!-- English Card -->
+                <div class="language-card">
+                    <div class="lang-icon-box">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div>
+                        <h4 style="margin: 0; color: var(--primary);">English</h4>
+                        <span style="font-size: 0.9rem; color: var(--text-light);">Fluent</span>
+                    </div>
+                </div>
+                <!-- Persian Card -->
+                <div class="language-card">
+                    <div class="lang-icon-box">
+                        <i class="fas fa-feather-alt"></i> <!-- Feather for Persian Lit/Calligraphy -->
+                    </div>
+                    <div>
+                        <h4 style="margin: 0; color: var(--primary);">Persian</h4>
+                        <span style="font-size: 0.9rem; color: var(--text-light);">Native</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- BIO SECTION -->
@@ -785,7 +791,7 @@
             </div>
         </section>
 
-        <!-- NEW CONTACT SECTION -->
+        <!-- CONTACT SECTION -->
         <section id="contact">
             <h2>Contact</h2>
             <p>I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.</p>
