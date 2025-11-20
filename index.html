@@ -8,22 +8,22 @@
     <!-- Google Fonts: Inter for a clean, modern tech look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Icons (Optional but recommended) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- CSS Variables for Easy Theming --- */
+        /* --- CSS Variables --- */
         :root {
             --primary: #0f172a;       /* Deep Slate */
-            --accent: #0d9488;        /* Teal */
-            --accent-hover: #0f766e;
+            --accent: #10b981;        /* Emerald Green (Matches your original green vibe but modern) */
+            --accent-hover: #059669;
             --bg-body: #f8fafc;       /* Light Gray Blue */
             --bg-card: #ffffff;
             --text-main: #334155;
             --text-light: #64748b;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
             --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
             --radius: 12px;
         }
@@ -31,7 +31,7 @@
         /* --- General Styles --- */
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px; /* Offset for sticky nav */
+            scroll-padding-top: 90px;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -44,36 +44,35 @@
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; padding: 0; margin: 0; }
         
-        /* Typography Improvements */
-        h1, h2, h3 { color: var(--primary); margin-top: 0; }
-        h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; }
+        h1, h2, h3, h4 { color: var(--primary); margin-top: 0; }
         h2 { 
             font-size: 1.75rem; 
             position: relative; 
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #e2e8f0;
         }
         h2::after {
             content: '';
             position: absolute;
             left: 0;
-            bottom: 0;
-            width: 60px;
-            height: 4px;
+            bottom: -2px;
+            width: 80px;
+            height: 2px;
             background: var(--accent);
-            border-radius: 2px;
         }
-        p { margin-bottom: 1rem; color: var(--text-main); }
+        p { margin-bottom: 1rem; text-align: left; } /* Reset justify for better web readability */
 
-        /* --- Navigation Bar (Glassmorphism) --- */
+        /* --- Navigation --- */
         nav {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid #e2e8f0;
         }
         .nav-container {
             max-width: 1100px;
@@ -84,33 +83,24 @@
             padding: 0 20px;
         }
         .nav-logo {
-            color: white;
-            font-weight: 700;
+            font-weight: 800;
             font-size: 1.2rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        nav ul {
-            display: flex;
-            flex-wrap: wrap;
-        }
+        nav ul { display: flex; flex-wrap: wrap; gap: 5px; }
         nav ul li a {
             display: block;
-            color: #cbd5e1;
+            color: var(--text-main);
             padding: 16px 12px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
         }
-        nav ul li a:hover {
-            color: var(--accent);
-        }
+        nav ul li a:hover { color: var(--accent); }
 
-        /* --- Layout Container --- */
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 0 20px;
-        }
-
-        /* --- Hero Section --- */
+        /* --- Header / Hero --- */
         .header-section {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
@@ -118,69 +108,49 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 40px;
+            gap: 50px;
+            margin-bottom: 40px;
         }
-        .header-content {
-            max-width: 600px;
-        }
-        .header-content h1 { color: white; margin-bottom: 10px; }
-        .header-content h2 { 
-            color: #cbd5e1; 
-            font-size: 1.25rem; 
-            font-weight: 400; 
-            border: none; /* remove h2 underline style for hero */
-        }
+        .header-content { max-width: 600px; }
+        .header-content h1 { color: white; font-size: 2.8rem; margin-bottom: 10px; }
+        .header-content h2 { color: var(--accent); font-size: 1.3rem; font-weight: 500; border: none; }
         .header-content h2::after { display: none; }
         
         .profile-img {
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            border: 4px solid var(--accent);
+            border: 4px solid white;
             object-fit: cover;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        /* --- Sections General --- */
-        section {
-            padding: 60px 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        section:last-child { border-bottom: none; }
-
-        /* --- About --- */
-        .about-text {
-            font-size: 1.05rem;
-            color: var(--text-main);
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 0 20px 40px 20px;
         }
 
-        /* --- Timeline Styles (Education & Experience) --- */
+        section { margin-bottom: 80px; }
+
+        /* --- Timeline Styles (Education/Experience) --- */
         .timeline-item {
             position: relative;
-            padding-left: 40px;
+            padding-left: 30px; /* Reduced padding for cleaner look */
             margin-bottom: 40px;
+            border-left: 2px solid #e2e8f0;
         }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 5px;
-            width: 2px;
-            height: 100%;
-            background: #e2e8f0;
-        }
-        .timeline-item:last-child::before { height: 0; } /* Stop line at last item */
+        .timeline-item:last-child { margin-bottom: 0; }
         
         .timeline-dot {
             position: absolute;
-            left: -6px;
-            top: 5px;
-            width: 14px;
-            height: 14px;
+            left: -9px; /* Center over line */
+            top: 0;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
-            background: var(--accent);
-            border: 3px solid white;
-            box-shadow: var(--shadow-sm);
+            background: var(--bg-card);
+            border: 3px solid var(--accent);
         }
 
         .timeline-header {
@@ -190,398 +160,229 @@
             flex-wrap: wrap;
             margin-bottom: 5px;
         }
-        .timeline-header h3 { margin: 0; font-size: 1.2rem; color: var(--primary); }
+        .timeline-header h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0; }
         .timeline-date { 
             font-size: 0.9rem; 
             font-weight: 600; 
             color: var(--accent); 
-            background: #e0f2f1;
-            padding: 2px 8px;
-            border-radius: 4px;
+            background: #ecfdf5;
+            padding: 4px 10px;
+            border-radius: 20px;
         }
         .timeline-subtitle {
-            font-style: italic;
-            color: var(--text-light);
-            margin-bottom: 10px;
             display: block;
-        }
-        
-        .edu-logo-small {
-            height: 30px;
-            vertical-align: middle;
-            margin-right: 10px;
-        }
-
-        /* --- Highlights Grid --- */
-        .highlight-box {
-            background: var(--bg-card);
-            padding: 25px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid #f1f5f9;
-            height: 100%;
-        }
-        .highlight-title {
-            color: var(--accent);
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 10px;
-            margin-top: 0;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        /* --- Skills Grid --- */
-        .skill-category-title {
-            margin-top: 40px;
-            font-size: 1.1rem;
             color: var(--text-light);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-weight: 500;
+            margin-bottom: 10px;
         }
-        .skill-category-title::after {
-            content: '';
-            flex-grow: 1;
-            height: 1px;
-            background: #e2e8f0;
+        .timeline-content ul { list-style-type: disc; padding-left: 20px; margin-top: 10px; }
+        .timeline-content li { margin-bottom: 6px; color: var(--text-main); }
+
+        .edu-logo-small {
+            height: 40px;
+            width: 40px;
+            object-fit: contain;
+            vertical-align: middle;
+            margin-right: 12px;
+            background: white;
+            padding: 2px;
+            border-radius: 4px;
+            border: 1px solid #eee;
         }
-        .skills-wrapper {
+
+        /* --- Highlights/Skills --- */
+        .highlight-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
-        .skill-card {
+        .card {
             background: var(--bg-card);
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        
+        .skill-category { margin-top: 30px; }
+        .skill-category h3 { font-size: 1.1rem; color: var(--text-light); border-bottom: 1px solid #eee; padding-bottom: 5px; margin-bottom: 15px; }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 15px;
+        }
+        .skill-item {
+            background: white;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
             padding: 15px;
             text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100px;
+            transition: 0.2s;
         }
-        .skill-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--accent);
-        }
-        .skill-card img {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-            margin-bottom: 10px;
-        }
-        .skill-name {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-main);
-        }
+        .skill-item:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); }
+        .skill-icon { width: 40px; height: 40px; object-fit: contain; margin-bottom: 8px; }
+        .skill-name { font-size: 0.85rem; font-weight: 600; color: var(--text-main); }
 
-        /* --- Coursework Grid (Compact) --- */
+        /* --- Coursework Grid --- */
         .course-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 15px;
         }
-        .course-card {
+        .course-item {
             background: white;
             padding: 15px;
             border-radius: 8px;
             border-left: 4px solid var(--primary);
             box-shadow: var(--shadow-sm);
         }
-        .course-card.audit { border-left-color: #f59e0b; } /* Amber for Audit */
-        .course-title { font-weight: 700; font-size: 1rem; display: block; margin-bottom: 4px; }
-        .course-meta { font-size: 0.85rem; color: var(--text-light); }
-        .course-grade { float: right; color: var(--accent); font-weight: 700; }
+        .course-item.audit { border-left-color: #f59e0b; }
+        .grade-badge { float: right; font-weight: bold; color: var(--accent); }
 
-        /* --- Contact Section --- */
-        .contact-wrapper {
+        /* --- Contact & Footer --- */
+        .contact-links {
             display: flex;
-            justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: var(--radius);
         }
-        .contact-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            box-shadow: var(--shadow-sm);
-            color: var(--primary);
-            font-weight: 600;
-            transition: 0.3s;
-            border: 1px solid #e2e8f0;
-        }
-        .contact-btn:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* --- Footer --- */
+        .contact-links p { margin: 0; }
         footer {
             background: var(--primary);
             color: #94a3b8;
             text-align: center;
             padding: 40px 20px;
-            margin-top: 40px;
+            margin-top: 60px;
         }
 
         /* --- Responsive --- */
         @media (max-width: 768px) {
-            .header-section {
-                flex-direction: column-reverse;
-                text-align: center;
-            }
-            nav ul {
-                justify-content: center;
-            }
-            .nav-logo { display: none; } /* Hide text logo on small screens to save space */
-            .timeline-header {
-                flex-direction: column;
-            }
+            .header-section { flex-direction: column-reverse; text-align: center; padding: 40px 20px; }
+            .header-content h1 { font-size: 2rem; }
+            .nav-container { flex-direction: column; }
+            nav ul { justify-content: center; margin-top: 10px; }
+            .timeline-header { flex-direction: column; }
+            .timeline-date { margin-top: 5px; display: inline-block; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGATION BAR -->
+    <!-- NAV -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="nav-logo">M. Farajian</a>
+            <a href="#" class="nav-logo">Majid Farajian</a>
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#education">Education</a></li>
-                <li><a href="#highlights">Research</a></li>
+                <li><a href="#highlights">Highlights</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#academic-exp">Academic Exp.</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#honors">Honors</a></li>
+                <li><a href="#languages">Languages</a></li>
+                <li><a href="#bio">Bio</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- HEADER / HERO -->
+    <!-- HEADER -->
     <header class="header-section">
         <div class="header-content">
             <h1>Majid Farajian</h1>
             <h2>Digital Embedded System Researcher</h2>
-            <p style="color: #cbd5e1; font-size: 1.1rem;">
-                Specializing in Neuromorphic Hardware, In-Memory Computing, and IoT Architectures. 
-                Bridging the gap between intelligent software and efficient hardware.
+            <p style="color: #cbd5e1; font-size: 1.1rem; margin-top: 15px;">
+                Specializing in Memory Design, In-Memory Computing, and Intelligent Hardware Architectures.
             </p>
-            <div style="margin-top: 20px;">
-                <a href="#contact" style="background: var(--accent); color: white; padding: 10px 20px; border-radius: 6px; font-weight: 600;">Get in Touch</a>
-                <a href="https://github.com/majidfa78" target="_blank" style="margin-left: 15px; color: white;"><i class="fab fa-github"></i> GitHub</a>
-            </div>
         </div>
-        <img src="statics/profile.jpg" alt="Majid Farajian" class="profile-img">
+        <img src="statics/profile.jpg" alt="Profile Picture" class="profile-img">
     </header>
 
     <div class="container">
         
-        <!-- ABOUT SECTION -->
+        <!-- ABOUT -->
         <section id="about">
-            <h2>About Me</h2>
-            <div class="about-text">
-                <p>
-                    Hi! I'm Majid, a digital electronics researcher and embedded systems developer who loves building things at the intersection of hardware and AI. I am fascinated by how systems think, sense, and learn, and my journey has been dedicated to turning abstract concepts into functional devices.
-                </p>
-                <p>
-                    My expertise ranges from low-level MCU programming and digital circuit design to neuromorphic models and deep learning. I thrive on projects that combine creativity with engineering precision—whether designing BLE/UWB localization systems, implementing hardware-efficient neural networks, or teaching deep learning to graduate students.
-                </p>
-                <p>
-                    Currently, I am focused on <strong>memory design, in-memory computing, and intelligent hardware architectures</strong>. When not debugging firmware or designing architectures, I'm exploring new ML ideas or developing side projects.
-                </p>
-            </div>
+            <h2>About</h2>
+            <p>Hi! I'm Majid — a digital electronics researcher, embedded systems developer, and AI enthusiast who enjoys building things that sit at the intersection of hardware and intelligent software. I've always been fascinated by how systems think, sense, and learn, and a big part of my journey has been turning those ideas into real, functional devices.</p>
+            <p>Over the years, I've worked on everything from low-level MCU programming and digital circuit design to neuromorphic models and deep learning applications. I love projects that combine creativity with engineering — whether it's designing a precise BLE and UWB indoor-Localization system, implementing a hardware-efficient neural network, or teaching deep learning to graduate students.</p>
+            <p>I'm currently focused on memory design, in-memory computing, and intelligent hardware architectures. My broader interests include IoT systems, indoor localization systems, long-range wireless communication, and practical AI for real-world devices. When I'm not experimenting with new architectures or debugging firmware, you'll probably find me exploring new ideas in machine learning, reading about hardware innovations, or developing side projects.</p>
         </section>
 
-        <!-- EDUCATION SECTION (TIMELINE STYLE) -->
+        <!-- EDUCATION -->
         <section id="education">
             <h2>Education</h2>
             
-            <!-- Education 1 -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-header">
-                    <h3><img src="statics/SBU.jpg" class="edu-logo-small" alt="SBU">M.Sc. in Digital Electronics</h3>
+                    <h3>
+                        <img src="statics/SBU.jpg" class="edu-logo-small" alt="SBU">
+                        M.Sc. in Digital Electronics - Shahid Beheshti University
+                    </h3>
                     <span class="timeline-date">Sep 2022 - Oct 2025</span>
                 </div>
-                <span class="timeline-subtitle">Shahid Beheshti University — Grade: Full Marks</span>
-                <p>
-                    <strong>Thesis:</strong> Object detection based on spiking neural networks (SNNs) for automotive applications.<br>
-                    <strong>Supervisor:</strong> Dr. Reza Ghaderi | <strong>Advisor:</strong> Dr. Soheila Nazari
-                </p>
+                <span class="timeline-subtitle">Thesis Grade: Full Marks</span>
+                <div class="timeline-content">
+                    <p><strong>Thesis Title:</strong> Object detection based on spiking neural networks for automotive applications</p>
+                    <p><strong>Supervisor:</strong> Dr. Reza Ghaderi | <strong>Advisor:</strong> Dr. Soheila Nazari</p>
+                </div>
             </div>
 
-            <!-- Education 2 -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-header">
-                    <h3><img src="statics/SCU.jpg" class="edu-logo-small" alt="SCU">B.Sc. in Electrical Engineering (Electronics)</h3>
+                    <h3>
+                        <img src="statics/SCU.jpg" class="edu-logo-small" alt="SCU">
+                        B.Sc. in Electrical Engineering (Electronics) - Shahid Chamran University
+                    </h3>
                     <span class="timeline-date">Sep 2017 - Jan 2022</span>
                 </div>
-                <span class="timeline-subtitle">Shahid Chamran University</span>
-                <p>
-                    <strong>Final Project:</strong> Implementing quad-copter flight controller on STM32 ARM microcontroller.<br>
-                    <strong>Supervisor:</strong> Dr. Seyyed Sajjad Moosapour
-                </p>
+                <div class="timeline-content">
+                    <p><strong>Final project:</strong> Implementing quad-copter flight controller on STM32 ARM microcontroller</p>
+                    <p><strong>Supervisor:</strong> Dr. Seyyed Sajjad Moosapour</p>
+                </div>
             </div>
         </section>
 
-        <!-- HIGHLIGHTS SECTION (GRID) -->
+        <!-- HIGHLIGHTS -->
         <section id="highlights">
-            <h2>Highlights & Interests</h2>
-            <div class="skills-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
-                
-                <!-- Card 1 -->
-                <div class="highlight-box">
-                    <h4 class="highlight-title">Research Focus</h4>
-                    <ul style="padding-left: 20px; line-height: 1.8;">
-                        <li><strong>Hardware:</strong> Memory Design, In-Memory Computing, Neuromorphic Hardware.</li>
+            <h2>Highlights</h2>
+            <div class="highlight-grid">
+                <!-- Research Focus -->
+                <div class="card">
+                    <h3 style="color: var(--accent); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Research Focus</h3>
+                    <ul style="list-style: disc; padding-left: 20px; margin-top: 10px;">
+                        <li><strong>Hardware & Memory:</strong> Memory Design, In-Memory Computing, Neuromorphic Hardware.</li>
                         <li><strong>AI Systems:</strong> Large Language Models (LLMs), Spiking Neural Networks (SNNs).</li>
-                        <li><strong>Wireless:</strong> Indoor Localization, Long-Range Wireless Networks, IoT.</li>
+                        <li><strong>Wireless & IoT:</strong> Indoor Localization, Long-Range Wireless Networks.</li>
+                        <li><strong>Applications:</strong> Healthcare Devices, Industrial IoT Frameworks.</li>
                     </ul>
                 </div>
-
-                <!-- Card 2 -->
-                <div class="highlight-box">
-                    <h4 class="highlight-title">Key Achievements</h4>
-                    <ul style="padding-left: 20px; line-height: 1.8;">
-                        <li><strong>Collaboration:</strong> Leading research on advanced digital systems targeting top-tier venues.</li>
-                        <li><strong>Industrial R&D:</strong> Developed unified IoT frameworks & positioning algorithms at <em>CoolTag</em>.</li>
-                        <li><strong>Teaching:</strong> Instructed graduate students in Deep Learning & Generative Models at KNTU.</li>
+                <!-- Key Projects -->
+                <div class="card">
+                    <h3 style="color: var(--accent); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Key Projects & Activities</h3>
+                    <ul style="list-style: disc; padding-left: 20px; margin-top: 10px;">
+                        <li><strong>International Collaboration:</strong> Led collaborative research on advanced digital systems and memory design targeting top-tier venues.</li>
+                        <li><strong>Industrial R&D:</strong> Developed unified IoT frameworks and indoor positioning algorithms for edge devices at <em>CoolTag Company</em>.</li>
+                        <li><strong>Teaching Leadership:</strong> Instructed graduate students in Deep Learning and Generative Models at KNTU.</li>
                     </ul>
                 </div>
-
             </div>
         </section>
 
-        <!-- SKILLS SECTION -->
+        <!-- SKILLS -->
         <section id="skills">
             <h2>Technical Skills</h2>
 
-            <div class="skill-category-title">Digital Electronics & Embedded Systems</div>
-            <div class="skills-wrapper">
-                <div class="skill-card"><img src="statics/FPGA.JPG" alt="Icon"><span class="skill-name">VHDL/Verilog</span></div>
-                <div class="skill-card"><img src="statics/Cadence.png" alt="Icon"><span class="skill-name">Virtuoso</span></div>
-                <div class="skill-card"><img src="statics/HSPICE.jfif" alt="Icon"><span class="skill-name">HSPICE</span></div>
-                <div class="skill-card"><img src="statics/Altium.png" alt="Icon"><span class="skill-name">Altium Designer</span></div>
-                <div class="skill-card"><img src="statics/arm.svg" alt="Icon"><span class="skill-name">STM32 ARM</span></div>
-                <div class="skill-card"><img src="statics/Vivado.jpg" alt="Icon"><span class="skill-name">Xilinx Vivado</span></div>
-                <div class="skill-card"><img src="statics/8bitmcu.png" alt="Icon"><span class="skill-name">AVR / STM8</span></div>
-            </div>
-
-            <div class="skill-category-title">Programming & Software</div>
-            <div class="skills-wrapper">
-                <div class="skill-card"><img src="statics/python.png" alt="Icon"><span class="skill-name">Python</span></div>
-                <div class="skill-card"><img src="statics/C.JPG" alt="Icon"><span class="skill-name">C / C++</span></div>
-                <div class="skill-card"><img src="statics/matlab.png" alt="Icon"><span class="skill-name">MATLAB</span></div>
-                <div class="skill-card"><img src="statics/linux.png" alt="Icon"><span class="skill-name">Embedded Linux</span></div>
-                <div class="skill-card"><img src="statics/qt.svg" alt="Icon"><span class="skill-name">Qt / PyQt</span></div>
-                <div class="skill-card"><img src="statics/django.png" alt="Icon"><span class="skill-name">Django</span></div>
-            </div>
-
-            <div class="skill-category-title">Connectivity & Protocols</div>
-            <div class="skills-wrapper">
-                <div class="skill-card"><img src="statics/BLE.png" alt="Icon"><span class="skill-name">BLE</span></div>
-                <div class="skill-card"><img src="statics/UWB.png" alt="Icon"><span class="skill-name">UWB</span></div>
-                <div class="skill-card"><img src="statics/LoRaWAN.png" alt="Icon"><span class="skill-name">LoRaWAN</span></div>
-                <div class="skill-card"><img src="statics/wifi.png" alt="Icon"><span class="skill-name">WiFi / ESP</span></div>
-                <div class="skill-card"><img src="statics/gps.svg" alt="Icon"><span class="skill-name">GNSS / GPS</span></div>
-            </div>
-
-            <div class="skill-category-title">AI & Machine Learning</div>
-            <div class="skills-wrapper">
-                <div class="skill-card"><img src="statics/torch.png" alt="Icon"><span class="skill-name">PyTorch</span></div>
-                <div class="skill-card"><img src="statics/tf.png" alt="Icon"><span class="skill-name">TensorFlow</span></div>
-                <div class="skill-card"><img src="statics/snntorch.png" alt="Icon"><span class="skill-name">snnTorch</span></div>
-                <div class="skill-card"><img src="statics/OpenCV.png" alt="Icon"><span class="skill-name">OpenCV</span></div>
-            </div>
-        </section>
-
-        <!-- ACADEMIC EXPERIENCE -->
-        <section id="academic-exp">
-            <h2>Academic Experience</h2>
-
-            <!-- Teaching -->
-            <h3 style="margin-bottom: 20px; font-size: 1.3rem;">Teaching Assistantships</h3>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-header">
-                    <h3>Deep Generative Models (DGM)</h3>
-                    <span class="timeline-date">Spring 2025</span>
-                </div>
-                <span class="timeline-subtitle">K.N. Toosi University of Technology (KNTU)</span>
-                <p>Graduate Instructional Assistant for Dr. Behrooz Nasihatkon.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-header">
-                    <h3>Deep Learning (DL)</h3>
-                    <span class="timeline-date">Fall 2024</span>
-                </div>
-                <span class="timeline-subtitle">K.N. Toosi University of Technology (KNTU)</span>
-                <p>Graduate Instructional Assistant for Dr. Mahdi Aliyari-Shoorehdeli.</p>
-            </div>
-
-            <!-- Grades -->
-            <h3 style="margin: 30px 0 15px; font-size: 1.3rem;">Selected Graduate Coursework</h3>
-            <div class="course-grid">
-                <div class="course-card">
-                    <span class="course-title">VHDL</span>
-                    <div class="course-meta">Dr. Soheila Nazari</div>
-                    <div class="course-grade">20 / 20</div>
-                </div>
-                <div class="course-card">
-                    <span class="course-title">ASIC / FPGA Design</span>
-                    <div class="course-meta">Dr. Soheila Nazari</div>
-                    <div class="course-grade">19.93 / 20</div>
-                </div>
-                <div class="course-card">
-                    <span class="course-title">Neural Networks</span>
-                    <div class="course-meta">Dr. Reza Ghaderi</div>
-                    <div class="course-grade">19.75 / 20</div>
-                </div>
-                <div class="course-card">
-                    <span class="course-title">VLSI</span>
-                    <div class="course-meta">Dr. M. Moaiyeri</div>
-                    <div class="course-grade">19.50 / 20</div>
-                </div>
-                <!-- Audits -->
-                <div class="course-card audit">
-                    <span class="course-title">Probabilistic Graphical Models</span>
-                    <div class="course-meta">Audit | KNTU</div>
-                </div>
-                <div class="course-card audit">
-                    <span class="course-title">Deep Generative Models</span>
-                    <div class="course-meta">Extra | Stanford (Online)</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- WORK EXPERIENCE -->
-        <section id="experience">
-            <h2>Work Experience</h2>
-            
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-header">
-                    <h3>Embedded Hardware Developer</h3>
-                    <span class="timeline-date">Jan 2023 - Jan 2025</span>
-                </div>
-                <span class="timeline-subtitle">Farapayesh Amin Co. (CoolTag) — Tehran, Iran</span>
-                <p>Led the hardware team in researching and developing IoT-based industrial monitoring systems.</p>
-                <ul style="font-size: 0.95rem; padding-left: 20px;">
-                    <li><strong>CoolTag Easy:</strong> Developed firmware (SiLabs SB1) and Django web-app for NFC temp data-loggers.<
+            <div class="skill-category">
