@@ -5,21 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Majid Farajian | Digital Embedded System Researcher</title>
     
-    <!-- Google Fonts: Inter for a clean, modern tech look -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- CSS Variables --- */
         :root {
             --primary: #0f172a;       /* Deep Slate */
-            --accent: #10b981;        /* Emerald Green (Matches your original green vibe but modern) */
-            --accent-hover: #059669;
-            --bg-body: #f8fafc;       /* Light Gray Blue */
+            --accent: #10b981;        /* Emerald Green */
+            --bg-body: #f8fafc;
             --bg-card: #ffffff;
             --text-main: #334155;
             --text-light: #64748b;
@@ -28,11 +27,8 @@
             --radius: 12px;
         }
 
-        /* --- General Styles --- */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 90px;
-        }
+        /* --- General --- */
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.7;
@@ -43,25 +39,8 @@
         }
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; padding: 0; margin: 0; }
-        
         h1, h2, h3, h4 { color: var(--primary); margin-top: 0; }
-        h2 { 
-            font-size: 1.75rem; 
-            position: relative; 
-            margin-bottom: 2rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid #e2e8f0;
-        }
-        h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -2px;
-            width: 80px;
-            height: 2px;
-            background: var(--accent);
-        }
-        p { margin-bottom: 1rem; text-align: left; } /* Reset justify for better web readability */
+        p { margin-bottom: 1rem; }
 
         /* --- Navigation --- */
         nav {
@@ -100,51 +79,95 @@
         }
         nav ul li a:hover { color: var(--accent); }
 
-        /* --- Header / Hero --- */
+        /* --- NEW TRAPEZOID HEADER SECTION --- */
         .header-section {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            position: relative;
+            /* Background Image with Dark Overlay */
+            background: 
+                linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.8) 100%),
+                url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=2070'); 
+            
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
             color: white;
-            padding: 80px 20px;
+            
+            /* Layout constraints */
+            padding: 120px 20px 160px 20px; /* Extra bottom padding for the cut */
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 50px;
-            margin-bottom: 40px;
-        }
-        .header-content { max-width: 600px; }
-        .header-content h1 { color: white; font-size: 2.8rem; margin-bottom: 10px; }
-        .header-content h2 { color: var(--accent); font-size: 1.3rem; font-weight: 500; border: none; }
-        .header-content h2::after { display: none; }
-        
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 4px solid white;
-            object-fit: cover;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            gap: 60px;
+            margin-bottom: 20px;
+
+            /* THE TRAPEZOID SHAPE */
+            /* This creates a diagonal cut from bottom-left to top-right */
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
 
+        .header-content { max-width: 600px; z-index: 2; }
+        .header-content h1 { 
+            color: white; 
+            font-size: 3rem; 
+            margin-bottom: 10px; 
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .header-content h2 { 
+            color: var(--accent); 
+            font-size: 1.4rem; 
+            font-weight: 600; 
+            border: none; 
+            margin-bottom: 15px;
+        }
+        
+        /* Profile Image Styling */
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.2); /* Semi-transparent border */
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px);
+        }
+
+        /* --- Container & Sections --- */
         .container {
             max-width: 1000px;
             margin: auto;
             padding: 0 20px 40px 20px;
         }
-
         section { margin-bottom: 80px; }
+        h2 { 
+            font-size: 1.75rem; 
+            position: relative; 
+            margin-bottom: 2rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 80px;
+            height: 2px;
+            background: var(--accent);
+        }
 
-        /* --- Timeline Styles (Education/Experience) --- */
+        /* --- Timeline Styles --- */
         .timeline-item {
             position: relative;
-            padding-left: 30px; /* Reduced padding for cleaner look */
+            padding-left: 30px;
             margin-bottom: 40px;
             border-left: 2px solid #e2e8f0;
         }
         .timeline-item:last-child { margin-bottom: 0; }
-        
         .timeline-dot {
             position: absolute;
-            left: -9px; /* Center over line */
+            left: -9px;
             top: 0;
             width: 16px;
             height: 16px;
@@ -152,7 +175,6 @@
             background: var(--bg-card);
             border: 3px solid var(--accent);
         }
-
         .timeline-header {
             display: flex;
             justify-content: space-between;
@@ -177,7 +199,6 @@
         }
         .timeline-content ul { list-style-type: disc; padding-left: 20px; margin-top: 10px; }
         .timeline-content li { margin-bottom: 6px; color: var(--text-main); }
-
         .edu-logo-small {
             height: 40px;
             width: 40px;
@@ -190,12 +211,8 @@
             border: 1px solid #eee;
         }
 
-        /* --- Highlights/Skills --- */
-        .highlight-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
+        /* --- Cards & Grid --- */
+        .highlight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .card {
             background: var(--bg-card);
             border: 1px solid #e2e8f0;
@@ -206,14 +223,10 @@
         }
         .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
         
+        /* --- Skills --- */
         .skill-category { margin-top: 30px; }
         .skill-category h3 { font-size: 1.1rem; color: var(--text-light); border-bottom: 1px solid #eee; padding-bottom: 5px; margin-bottom: 15px; }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-            gap: 15px;
-        }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px; }
         .skill-item {
             background: white;
             border: 1px solid #e2e8f0;
@@ -231,12 +244,8 @@
         .skill-icon { width: 40px; height: 40px; object-fit: contain; margin-bottom: 8px; }
         .skill-name { font-size: 0.85rem; font-weight: 600; color: var(--text-main); }
 
-        /* --- Coursework Grid --- */
-        .course-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-        }
+        /* --- Coursework --- */
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
         .course-item {
             background: white;
             padding: 15px;
@@ -247,28 +256,22 @@
         .course-item.audit { border-left-color: #f59e0b; }
         .grade-badge { float: right; font-weight: bold; color: var(--accent); }
 
-        /* --- Contact & Footer --- */
-        .contact-links {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            background: #f1f5f9;
-            padding: 20px;
-            border-radius: var(--radius);
-        }
-        .contact-links p { margin: 0; }
-        footer {
-            background: var(--primary);
-            color: #94a3b8;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 60px;
-        }
+        /* --- Footer --- */
+        .contact-links { display: flex; gap: 20px; flex-wrap: wrap; background: #f1f5f9; padding: 20px; border-radius: var(--radius); }
+        footer { background: var(--primary); color: #94a3b8; text-align: center; padding: 40px 20px; margin-top: 60px; }
 
         /* --- Responsive --- */
         @media (max-width: 768px) {
-            .header-section { flex-direction: column-reverse; text-align: center; padding: 40px 20px; }
-            .header-content h1 { font-size: 2rem; }
+            /* Header adjustments for mobile */
+            .header-section { 
+                flex-direction: column-reverse; 
+                text-align: center; 
+                padding: 80px 20px 120px 20px;
+                clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%); /* Less steep angle on mobile */
+            }
+            .header-content h1 { font-size: 2.2rem; }
+            .profile-img { width: 150px; height: 150px; }
+            
             .nav-container { flex-direction: column; }
             nav ul { justify-content: center; margin-top: 10px; }
             .timeline-header { flex-direction: column; }
@@ -297,14 +300,17 @@
         </div>
     </nav>
 
-    <!-- HEADER -->
+    <!-- HEADER (TRAPEZOID) -->
     <header class="header-section">
         <div class="header-content">
             <h1>Majid Farajian</h1>
             <h2>Digital Embedded System Researcher</h2>
-            <p style="color: #cbd5e1; font-size: 1.1rem; margin-top: 15px;">
+            <p style="color: #e2e8f0; font-size: 1.1rem; margin-top: 15px; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">
                 Specializing in Memory Design, In-Memory Computing, and Intelligent Hardware Architectures.
             </p>
+            <div style="margin-top: 25px;">
+                <a href="#contact" style="background: var(--accent); color: white; padding: 12px 25px; border-radius: 30px; font-weight: 600; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);">Get In Touch</a>
+            </div>
         </div>
         <img src="statics/profile.jpg" alt="Profile Picture" class="profile-img">
     </header>
@@ -316,41 +322,32 @@
             <h2>About</h2>
             <p>Hi! I'm Majid — a digital electronics researcher, embedded systems developer, and AI enthusiast who enjoys building things that sit at the intersection of hardware and intelligent software. I've always been fascinated by how systems think, sense, and learn, and a big part of my journey has been turning those ideas into real, functional devices.</p>
             <p>Over the years, I've worked on everything from low-level MCU programming and digital circuit design to neuromorphic models and deep learning applications. I love projects that combine creativity with engineering — whether it's designing a precise BLE and UWB indoor-Localization system, implementing a hardware-efficient neural network, or teaching deep learning to graduate students.</p>
-            <p>I'm currently focused on memory design, in-memory computing, and intelligent hardware architectures. My broader interests include IoT systems, indoor localization systems, long-range wireless communication, and practical AI for real-world devices. When I'm not experimenting with new architectures or debugging firmware, you'll probably find me exploring new ideas in machine learning, reading about hardware innovations, or developing side projects.</p>
+            <p>I'm currently focused on memory design, in-memory computing, and intelligent hardware architectures. My broader interests include IoT systems, indoor localization systems, long-range wireless communication, and practical AI for real-world devices.</p>
         </section>
 
         <!-- EDUCATION -->
         <section id="education">
             <h2>Education</h2>
-            
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-header">
-                    <h3>
-                        <img src="statics/SBU.jpg" class="edu-logo-small" alt="SBU">
-                        M.Sc. in Digital Electronics - Shahid Beheshti University
-                    </h3>
+                    <h3><img src="statics/SBU.jpg" class="edu-logo-small" alt="SBU">M.Sc. in Digital Electronics - Shahid Beheshti University</h3>
                     <span class="timeline-date">Sep 2022 - Oct 2025</span>
                 </div>
                 <span class="timeline-subtitle">Thesis Grade: Full Marks</span>
                 <div class="timeline-content">
-                    <p><strong>Thesis Title:</strong> Object detection based on spiking neural networks for automotive applications</p>
+                    <p><strong>Thesis:</strong> Object detection based on spiking neural networks for automotive applications</p>
                     <p><strong>Supervisor:</strong> Dr. Reza Ghaderi | <strong>Advisor:</strong> Dr. Soheila Nazari</p>
                 </div>
             </div>
-
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-header">
-                    <h3>
-                        <img src="statics/SCU.jpg" class="edu-logo-small" alt="SCU">
-                        B.Sc. in Electrical Engineering (Electronics) - Shahid Chamran University
-                    </h3>
+                    <h3><img src="statics/SCU.jpg" class="edu-logo-small" alt="SCU">B.Sc. in Electrical Engineering - Shahid Chamran University</h3>
                     <span class="timeline-date">Sep 2017 - Jan 2022</span>
                 </div>
                 <div class="timeline-content">
-                    <p><strong>Final project:</strong> Implementing quad-copter flight controller on STM32 ARM microcontroller</p>
-                    <p><strong>Supervisor:</strong> Dr. Seyyed Sajjad Moosapour</p>
+                    <p><strong>Final Project:</strong> Implementing quad-copter flight controller on STM32 ARM microcontroller</p>
                 </div>
             </div>
         </section>
@@ -359,23 +356,20 @@
         <section id="highlights">
             <h2>Highlights</h2>
             <div class="highlight-grid">
-                <!-- Research Focus -->
                 <div class="card">
                     <h3 style="color: var(--accent); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Research Focus</h3>
                     <ul style="list-style: disc; padding-left: 20px; margin-top: 10px;">
-                        <li><strong>Hardware & Memory:</strong> Memory Design, In-Memory Computing, Neuromorphic Hardware.</li>
+                        <li><strong>Hardware:</strong> Memory Design, In-Memory Computing, Neuromorphic Hardware.</li>
                         <li><strong>AI Systems:</strong> Large Language Models (LLMs), Spiking Neural Networks (SNNs).</li>
-                        <li><strong>Wireless & IoT:</strong> Indoor Localization, Long-Range Wireless Networks.</li>
-                        <li><strong>Applications:</strong> Healthcare Devices, Industrial IoT Frameworks.</li>
+                        <li><strong>Wireless:</strong> Indoor Localization, Long-Range Wireless Networks.</li>
                     </ul>
                 </div>
-                <!-- Key Projects -->
                 <div class="card">
-                    <h3 style="color: var(--accent); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Key Projects & Activities</h3>
+                    <h3 style="color: var(--accent); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Key Projects</h3>
                     <ul style="list-style: disc; padding-left: 20px; margin-top: 10px;">
-                        <li><strong>International Collaboration:</strong> Led collaborative research on advanced digital systems and memory design targeting top-tier venues.</li>
-                        <li><strong>Industrial R&D:</strong> Developed unified IoT frameworks and indoor positioning algorithms for edge devices at <em>CoolTag Company</em>.</li>
-                        <li><strong>Teaching Leadership:</strong> Instructed graduate students in Deep Learning and Generative Models at KNTU.</li>
+                        <li><strong>Collaboration:</strong> Led collaborative research on digital systems targeting top-tier venues.</li>
+                        <li><strong>Industrial R&D:</strong> Developed unified IoT frameworks and positioning algorithms at <em>CoolTag</em>.</li>
+                        <li><strong>Teaching:</strong> Instructed graduate students in Deep Learning at KNTU.</li>
                     </ul>
                 </div>
             </div>
@@ -413,38 +407,16 @@
             </div>
 
             <div class="skill-category">
-                <h3>Communication Interfaces and Localization</h3>
+                <h3>Connectivity & AI</h3>
                 <div class="skills-grid">
                     <div class="skill-item"><img src="statics/BLE.png" class="skill-icon" alt="BLE"><span class="skill-name">BLE</span></div>
-                    <div class="skill-item"><img src="statics/wifi.png" class="skill-icon" alt="WiFi"><span class="skill-name">WiFi</span></div>
                     <div class="skill-item"><img src="statics/UWB.png" class="skill-icon" alt="UWB"><span class="skill-name">UWB</span></div>
-                    <div class="skill-item"><img src="statics/HID.jpg" class="skill-icon" alt="HID"><span class="skill-name">USB HID</span></div>
-                    <div class="skill-item"><img src="statics/gps.svg" class="skill-icon" alt="GPS"><span class="skill-name">GPS/GNSS</span></div>
                     <div class="skill-item"><img src="statics/LoRaWAN.png" class="skill-icon" alt="LoRaWAN"><span class="skill-name">LoRaWAN</span></div>
-                    <div class="skill-item"><img src="statics/RS485.jpg" class="skill-icon" alt="RS485"><span class="skill-name">RS232/RS485</span></div>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>AI & Machine Learning</h3>
-                <div class="skills-grid">
                     <div class="skill-item"><img src="statics/torch.png" class="skill-icon" alt="PyTorch"><span class="skill-name">PyTorch</span></div>
                     <div class="skill-item"><img src="statics/tf.png" class="skill-icon" alt="TensorFlow"><span class="skill-name">TensorFlow</span></div>
-                    <div class="skill-item"><img src="statics/Scikit_learn.png" class="skill-icon" alt="Scikit"><span class="skill-name">Sci-kit Learn</span></div>
                     <div class="skill-item"><img src="statics/OpenCV.png" class="skill-icon" alt="OpenCV"><span class="skill-name">OpenCV</span></div>
-                    <div class="skill-item"><img src="statics/keras.png" class="skill-icon" alt="Keras"><span class="skill-name">Keras</span></div>
                     <div class="skill-item"><img src="statics/snntorch.png" class="skill-icon" alt="snnTorch"><span class="skill-name">snnTorch</span></div>
-                    <div class="skill-item"><img src="statics/Cuda.png" class="skill-icon" alt="CUDA"><span class="skill-name">CUDA</span></div>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>CI/CD & Tools</h3>
-                <div class="skills-grid">
-                    <div class="skill-item"><img src="statics/markdown.png" class="skill-icon" alt="Markdown"><span class="skill-name">Markdown</span></div>
                     <div class="skill-item"><img src="statics/Git.png" class="skill-icon" alt="Git"><span class="skill-name">Git</span></div>
-                    <div class="skill-item"><img src="statics/docker.png" class="skill-icon" alt="Docker"><span class="skill-name">Docker</span></div>
-                    <div class="skill-item"><img src="statics/Azure.png" class="skill-icon" alt="Azure"><span class="skill-name">Azure</span></div>
                 </div>
             </div>
         </section>
@@ -452,8 +424,6 @@
         <!-- ACADEMIC EXPERIENCE -->
         <section id="academic-exp">
             <h2>Academic Experience</h2>
-
-            <!-- TAs -->
             <h3 style="margin-bottom: 20px; color: var(--text-main);">Teaching Assistantships</h3>
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -472,152 +442,80 @@
                 <p class="timeline-subtitle">Graduate Instructional Assistant for Dr. Mahdi Aliyari-Shoorehdeli.</p>
             </div>
 
-            <!-- Courses -->
             <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--text-main);">Graded Graduate Coursework</h3>
             <div class="course-grid">
-                <div class="course-item">
-                    <strong>VHDL</strong><span class="grade-badge">20 / 20</span>
-                    <div style="font-size: 0.85rem; color: #666;">SBU - Dr. Soheila Nazari</div>
-                </div>
-                <div class="course-item">
-                    <strong>ASIC / FPGA Design</strong><span class="grade-badge">19.93 / 20</span>
-                    <div style="font-size: 0.85rem; color: #666;">SBU - Dr. Soheila Nazari</div>
-                </div>
-                <div class="course-item">
-                    <strong>Neural Networks</strong><span class="grade-badge">19.75 / 20</span>
-                    <div style="font-size: 0.85rem; color: #666;">SBU - Dr. Reza Ghaderi</div>
-                </div>
-                <div class="course-item">
-                    <strong>VLSI</strong><span class="grade-badge">19.50 / 20</span>
-                    <div style="font-size: 0.85rem; color: #666;">SBU - Dr. M. Moaiyeri</div>
-                </div>
-                <div class="course-item">
-                    <strong>Advanced VLSI</strong><span class="grade-badge">18.50 / 20</span>
-                    <div style="font-size: 0.85rem; color: #666;">SBU - Dr. M. Moaiyeri</div>
-                </div>
-                <div class="course-item">
-                    <strong>Deep Learning</strong><span class="grade-badge">15.50 / 20</span>
-                    <div style="font-size: 0.85rem; color: #666;">SBU - Dr. Reza Ghaderi</div>
-                </div>
+                <div class="course-item"><strong>VHDL</strong><span class="grade-badge">20 / 20</span><div style="font-size: 0.85rem; color: #666;">Dr. Soheila Nazari</div></div>
+                <div class="course-item"><strong>ASIC / FPGA Design</strong><span class="grade-badge">19.93 / 20</span><div style="font-size: 0.85rem; color: #666;">Dr. Soheila Nazari</div></div>
+                <div class="course-item"><strong>Neural Networks</strong><span class="grade-badge">19.75 / 20</span><div style="font-size: 0.85rem; color: #666;">Dr. Reza Ghaderi</div></div>
+                <div class="course-item"><strong>VLSI</strong><span class="grade-badge">19.50 / 20</span><div style="font-size: 0.85rem; color: #666;">Dr. M. Moaiyeri</div></div>
             </div>
 
-            <!-- Audits -->
             <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--text-main);">Audit & Extra Courses</h3>
             <div class="course-grid">
-                <div class="course-item audit">
-                    <strong>Probabilistic Graphical Models</strong>
-                    <div style="font-size: 0.85rem; color: #666;">KNTU - Dr. Behrooz Nasihatkon (Audit)</div>
-                </div>
-                <div class="course-item audit">
-                    <strong>Advanced Math for ML</strong>
-                    <div style="font-size: 0.85rem; color: #666;">KNTU - Dr. Behrooz Nasihatkon (Audit)</div>
-                </div>
-                <div class="course-item audit">
-                    <strong>Deep Generative Models</strong>
-                    <div style="font-size: 0.85rem; color: #666;">Stanford - Dr. Stefano Ermon (Extra)</div>
-                </div>
+                <div class="course-item audit"><strong>Probabilistic Graphical Models</strong><div style="font-size: 0.85rem; color: #666;">KNTU (Audit)</div></div>
+                <div class="course-item audit"><strong>Deep Generative Models</strong><div style="font-size: 0.85rem; color: #666;">Stanford (Extra)</div></div>
             </div>
         </section>
 
         <!-- WORK EXPERIENCE -->
         <section id="experience">
             <h2>Work Experience</h2>
-
-            <!-- Job 1 -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-header">
                     <h3>Embedded Hardware Developer</h3>
                     <span class="timeline-date">Jan 2023 - Jan 2025</span>
                 </div>
-                <span class="timeline-subtitle">Farapayesh Amin Co. (CoolTag) — Tehran, Iran</span>
-                <p>Led the hardware team in researching and developing IoT-based industrial monitoring systems and offline data loggers, while ensuring operational maintenance of ERP platforms.</p>
+                <span class="timeline-subtitle">Farapayesh Amin Co. (CoolTag)</span>
                 <div class="timeline-content">
                     <ul>
-                        <li><strong>CoolTag Easy:</strong> Developed firmware (Silicon-Labs SB1 MCU) and web-app (Django) for a portable NFC temperature data-logger. <a href="https://www.cooltag.ir/products/offline/cooltagbasic/" target="_blank" style="color: var(--accent);">[View Product]</a></li>
-                        <li><strong>BLE Indoor Positioning:</strong> Designed algorithms and server-side implementation (Python, ThingsBoard) for a LoRaWAN tracker system using BLE beacons.</li>
-                        <li><strong>Fully Automated Delivery System:</strong> Architected a unified system (ERPNext, Python, SQL, MATLAB) reducing processing time from 3 months to 1 week for batches of 1,000 products.</li>
+                        <li><strong>CoolTag Easy:</strong> Developed firmware (SiLabs SB1) and web-app for NFC data-logger.</li>
+                        <li><strong>Indoor Positioning:</strong> Designed BLE/LoRaWAN algorithms and server-side logic.</li>
+                        <li><strong>Automation:</strong> Architected ERP system reducing batch processing time significantly.</li>
                     </ul>
                 </div>
             </div>
-
-            <!-- Job 2 -->
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-header">
-                    <h3>Senior Member of Industrial Control Lab</h3>
-                    <span class="timeline-date">Nov 2019 - Nov 2021</span>
-                </div>
-                <span class="timeline-subtitle">Shahid Chamran University — Ahvaz, Iran</span>
-                <div class="timeline-content">
-                    <ul>
-                        <li><strong>Quad-Rotor Flight Controller:</strong> Circuit design and programming (Arduino Mega) utilizing GPS/IMU positioning and Barometric Altimeter.</li>
-                        <li><strong>PC-Controlled DC Motor:</strong> Implemented PID speed control on AVR MCU with a Java-based GUI for Windows/Linux.</li>
-                        <li><strong>BLDC Motor Controller:</strong> Designed MOSFET drive stages controlled by AVR, simulated in Proteus and MATLAB.</li>
-                        <li><strong>Elevator Control System:</strong> Prototyped using Siemens S7-300 PLC with magnetic proximity sensors.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Job 3 -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-header">
                     <h3>Electronic Specialist</h3>
                     <span class="timeline-date">May 2017 - May 2020</span>
                 </div>
-                <span class="timeline-subtitle">Ahwaz Robotic Home — Ahvaz, Iran</span>
-                <p>Maintained robotic education platforms and developed training programs incorporating cutting-edge technologies.</p>
+                <span class="timeline-subtitle">Ahwaz Robotic Home</span>
                 <div class="timeline-content">
                     <ul>
-                        <li><strong>Line Follower Robots (8 & 14 Sensors):</strong> Designed PCB/Frame (Altium, SolidWorks) and programmed MCU algorithms (Arduino Uno/Mega).</li>
-                        <li><strong>Smart Home IoT System:</strong> Developed ESP8266-based appliance control via WiFi and Telegram Bot.</li>
-                        <li><strong>Security System:</strong> Built an Arduino-based entrance control system using Password and NFC authentication.</li>
+                        <li>Designed Line Follower Robots and Smart Home IoT Systems using ESP8266.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- HONORS -->
+        <!-- HONORS & LANGUAGES -->
         <section id="honors">
-            <h2>Honors & Awards</h2>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-header">
-                    <h3>Eligible for Iranian National Talent Program</h3>
-                    <span class="timeline-date">Sep 2025</span>
+            <h2>Honors & Languages</h2>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                <div style="flex: 2; min-width: 300px;">
+                    <h3 style="font-size:1.2rem; margin-bottom:15px;">Awards</h3>
+                    <ul style="list-style: none;">
+                        <li style="background: white; padding: 10px 15px; margin-bottom: 10px; border-left: 4px solid var(--accent); border-radius: 4px; box-shadow: var(--shadow-sm);">
+                            <strong>Eligible for Iranian National Talent Program</strong> (Sep 2025)
+                        </li>
+                        <li style="background: white; padding: 10px 15px; margin-bottom: 10px; border-left: 4px solid var(--accent); border-radius: 4px; box-shadow: var(--shadow-sm);">
+                            <strong>Top 1% in National University Entrance Exam</strong> (2017 & 2022)
+                        </li>
+                        <li style="background: white; padding: 10px 15px; margin-bottom: 10px; border-left: 4px solid var(--accent); border-radius: 4px; box-shadow: var(--shadow-sm);">
+                            <strong>Top 3 Projects in B.Sc. Program</strong> (Jan 2022)
+                        </li>
+                    </ul>
                 </div>
-                <span class="timeline-subtitle">Qualifying with a substantial score.</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-header">
-                    <h3>Ranked Among Top 1% in National University Entrance Exam</h3>
-                    <span class="timeline-date">Sep 2017 & 2022</span>
-                </div>
-                <span class="timeline-subtitle">Achieved top ranking in both B.Sc. and M.Sc. entrance exams.</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-header">
-                    <h3>Among Top 3 Projects in the B.Sc. Program</h3>
-                    <span class="timeline-date">Jan 2022</span>
-                </div>
-                <span class="timeline-subtitle">Recognized for project excellence at SCU.</span>
-            </div>
-        </section>
-
-        <!-- LANGUAGES -->
-        <section id="languages">
-            <h2>Languages</h2>
-            <div class="course-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                <div class="course-item" style="border-left-color: var(--accent);">
-                    <strong>English</strong>
-                    <div style="color: #666;">Fluent</div>
-                </div>
-                <div class="course-item" style="border-left-color: var(--accent);">
-                    <strong>Persian</strong>
-                    <div style="color: #666;">Native</div>
+                <div style="flex: 1; min-width: 200px;">
+                    <h3 style="font-size:1.2rem; margin-bottom:15px;">Languages</h3>
+                    <div class="course-item" style="border-left-color: var(--accent); margin-bottom: 10px;">
+                        <strong>English</strong><br><small>Fluent</small>
+                    </div>
+                    <div class="course-item" style="border-left-color: var(--accent);">
+                        <strong>Persian</strong><br><small>Native</small>
+                    </div>
                 </div>
             </div>
         </section>
@@ -626,8 +524,8 @@
         <section id="bio">
             <h2>Professional Bio</h2>
             <div class="card" style="line-height: 1.9;">
-                <p>Majid Farajian, born in 1999 in Ahvaz, Iran, is a digital electronic engineer with strong experience in embedded systems, AI-focused hardware design, and indoor localization technologies. He earned his B.Sc. in Electrical Engineering-Electronics from Shahid Chamran University of Ahvaz and his M.Sc. in Digital Electronic Engineering from Shahid Beheshti University, graduating with high distinction. His master's thesis focused on object detection using spiking neural networks for automotive applications.</p>
-                <p>Majid has over a decade of hands-on R&D experience in electronic circuit design, firmware development, IoT systems, and positioning technologies. He previously worked as a Senior Embedded Developer at CoolTag Company, contributing to indoor positioning algorithms and unified IoT frameworks. He also serves as a Graduate Instructional Assistant for advanced AI and deep learning courses at Khajeh Nasir Toosi University of Technology (KNTU). His current interests include neuromorphic hardware, memory design, in-memory computing, long-range wireless networks, and practical machine learning for real-world devices.</p>
+                <p>Majid Farajian, born in 1999 in Ahvaz, Iran, is a digital electronic engineer with strong experience in embedded systems, AI-focused hardware design, and indoor localization technologies. He earned his B.Sc. in Electrical Engineering-Electronics from Shahid Chamran University of Ahvaz and his M.Sc. in Digital Electronic Engineering from Shahid Beheshti University.</p>
+                <p>Majid has over a decade of hands-on R&D experience in electronic circuit design, firmware development, and IoT systems. He previously worked as a Senior Embedded Developer at CoolTag Company and serves as a Graduate Instructional Assistant for advanced AI courses at KNTU.</p>
             </div>
         </section>
 
