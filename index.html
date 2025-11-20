@@ -62,7 +62,6 @@
             background: var(--accent);
         }
         
-        /* Prevent Justify on Web (improves readability) */
         p, li { text-align: left; } 
 
         /* --- Navigation Bar --- */
@@ -105,7 +104,6 @@
         /* --- TRAPEZOID HEADER SECTION --- */
         .header-section {
             position: relative;
-            /* Tech Background Image with Overlay */
             background: 
                 linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.85) 100%),
                 url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop');
@@ -113,14 +111,12 @@
             background-position: center;
             background-attachment: fixed;
             color: white;
-            padding: 100px 20px 160px 20px; /* Extra bottom padding for the slanted cut */
+            padding: 100px 20px 160px 20px; 
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 50px;
             margin-bottom: 20px;
-            
-            /* The Trapezoid Cut */
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
 
@@ -139,7 +135,7 @@
             border: none; 
             margin-bottom: 20px;
         }
-        .header-content h2::after { display: none; } /* Remove underline from hero h2 */
+        .header-content h2::after { display: none; }
 
         .profile-img {
             width: 220px;
@@ -150,6 +146,24 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
+        /* --- Header Button --- */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+            transition: transform 0.2s ease, background-color 0.2s;
+        }
+        .cta-button:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-3px);
+        }
+
         /* --- Main Container --- */
         .container {
             max-width: 1000px;
@@ -158,7 +172,7 @@
         }
         section { margin-bottom: 80px; }
 
-        /* --- Timeline Styles (Education & Experience) --- */
+        /* --- Timeline Styles --- */
         .timeline-item {
             position: relative;
             padding-left: 35px;
@@ -166,7 +180,6 @@
             border-left: 2px solid #e2e8f0;
         }
         .timeline-item:last-child { margin-bottom: 0; border-left-color: transparent; }
-        
         .timeline-dot {
             position: absolute;
             left: -9px;
@@ -177,7 +190,6 @@
             background: var(--bg-card);
             border: 3px solid var(--accent);
         }
-
         .timeline-header {
             display: flex;
             justify-content: space-between;
@@ -186,7 +198,6 @@
             margin-bottom: 8px;
         }
         .timeline-header h3 { font-size: 1.25rem; font-weight: 700; margin: 0; color: var(--primary); }
-        
         .timeline-date { 
             font-size: 0.9rem; 
             font-weight: 600; 
@@ -196,7 +207,6 @@
             border-radius: 20px;
             white-space: nowrap;
         }
-        
         .timeline-subtitle {
             display: block;
             color: var(--text-light);
@@ -204,7 +214,6 @@
             margin-bottom: 12px;
             font-size: 1rem;
         }
-
         .timeline-content ul { list-style-type: disc; padding-left: 20px; }
         .timeline-content li { margin-bottom: 8px; color: var(--text-main); font-size: 0.95rem; }
         
@@ -236,7 +245,6 @@
             transition: transform 0.2s;
         }
         .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--accent); }
-        
         .card h3 {
             font-size: 1rem;
             text-transform: uppercase;
@@ -264,7 +272,6 @@
             height: 1px;
             background: #e2e8f0;
         }
-        
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -303,31 +310,100 @@
             border-right: 1px solid #f1f5f9;
             border-bottom: 1px solid #f1f5f9;
         }
-        .course-item.audit { border-left-color: #f59e0b; } /* Amber for Audit */
+        .course-item.audit { border-left-color: #f59e0b; }
         .course-name { font-weight: 700; font-size: 0.95rem; display: block; margin-bottom: 4px; }
         .course-meta { font-size: 0.85rem; color: var(--text-light); }
         .grade-badge { float: right; font-weight: 700; color: var(--accent-dark); }
 
-        /* --- Contact & Footer --- */
-        .contact-card {
-            background: #f8fafc;
-            padding: 25px;
-            border-radius: var(--radius);
-            border: 1px solid #e2e8f0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
+        /* --- CONTACT SECTION REDESIGN --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
         }
-        .contact-link {
+        
+        /* Social Image Links */
+        .social-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .social-card {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            color: var(--primary);
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
         }
-        .contact-link:hover { color: var(--accent); }
+        .social-card:hover {
+            transform: translateX(5px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+        }
+        .social-icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: white;
+        }
+        .social-info h4 { margin: 0; font-size: 1rem; color: var(--primary); }
+        .social-info span { font-size: 0.85rem; color: var(--text-light); }
 
+        /* Form Styles */
+        .contact-form-container {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            border: 1px solid #e2e8f0;
+            box-shadow: var(--shadow-sm);
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            box-sizing: border-box; /* Ensures padding doesn't overflow width */
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .submit-btn:hover {
+            background: var(--accent-dark);
+        }
+
+        /* Footer */
         footer {
             background: var(--primary);
             color: #94a3b8;
@@ -336,22 +412,23 @@
             margin-top: 60px;
         }
 
-        /* --- Responsive Design --- */
+        /* Responsive */
         @media (max-width: 768px) {
             .header-section { 
                 flex-direction: column-reverse; 
                 text-align: center; 
                 padding: 80px 20px 120px 20px;
-                clip-path: polygon(0 0, 100% 0, 100% 93%, 0 100%); /* Less steep on mobile */
+                clip-path: polygon(0 0, 100% 0, 100% 93%, 0 100%);
             }
             .header-content h1 { font-size: 2rem; }
             .profile-img { width: 160px; height: 160px; }
-            
             .nav-container { flex-direction: column; gap: 10px; }
             nav ul { justify-content: center; }
-            
             .timeline-header { flex-direction: column; gap: 5px; }
             .timeline-date { display: inline-block; }
+            
+            /* Contact Section Stack */
+            .contact-wrapper { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -384,6 +461,8 @@
             <p style="color: #e2e8f0; font-size: 1.1rem; margin-top: 15px;">
                 Specializing in Memory Design, In-Memory Computing, and Intelligent Hardware Architectures.
             </p>
+            <!-- ADDED: Header Button -->
+            <a href="#contact" class="cta-button">Get in Touch</a>
         </div>
         <img src="statics/profile.jpg" alt="Majid Farajian" class="profile-img">
     </header>
@@ -402,7 +481,6 @@
         <section id="education">
             <h2>Education</h2>
             
-            <!-- Master's -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-header">
@@ -419,7 +497,6 @@
                 </div>
             </div>
 
-            <!-- Bachelor's -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-header">
@@ -440,7 +517,6 @@
         <section id="highlights">
             <h2>Highlights</h2>
             <div class="highlight-grid">
-                <!-- Research Focus -->
                 <div class="card">
                     <h3>Research Focus</h3>
                     <ul style="list-style: disc; padding-left: 20px; line-height: 1.8;">
@@ -451,7 +527,6 @@
                     </ul>
                 </div>
 
-                <!-- Key Projects -->
                 <div class="card">
                     <h3>Key Projects & Activities</h3>
                     <ul style="list-style: disc; padding-left: 20px; line-height: 1.8;">
@@ -467,7 +542,6 @@
         <section id="skills">
             <h2>Technical Skills</h2>
 
-            <!-- Category 1 -->
             <div class="skill-category">
                 <div class="skill-category-title">Digital Electronics and Embedded Systems</div>
                 <div class="skills-grid">
@@ -481,7 +555,6 @@
                 </div>
             </div>
 
-            <!-- Category 2 -->
             <div class="skill-category">
                 <div class="skill-category-title">Programming</div>
                 <div class="skills-grid">
@@ -496,7 +569,6 @@
                 </div>
             </div>
 
-            <!-- Category 3 -->
             <div class="skill-category">
                 <div class="skill-category-title">Communication Interfaces and Localization</div>
                 <div class="skills-grid">
@@ -510,7 +582,6 @@
                 </div>
             </div>
 
-            <!-- Category 4 -->
             <div class="skill-category">
                 <div class="skill-category-title">AI & Machine Learning</div>
                 <div class="skills-grid">
@@ -524,7 +595,6 @@
                 </div>
             </div>
 
-            <!-- Category 5 -->
             <div class="skill-category">
                 <div class="skill-category-title">CI/CD & Tools</div>
                 <div class="skills-grid">
@@ -540,7 +610,6 @@
         <section id="academic-exp">
             <h2>Academic Experience</h2>
 
-            <!-- TAs -->
             <h3 style="color: var(--text-main); margin-bottom: 20px;">Teaching Assistantships</h3>
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -559,7 +628,6 @@
                 <span class="timeline-subtitle">KNTU — Graduate Instructional Assistant for Dr. Mahdi Aliyari-Shoorehdeli.</span>
             </div>
 
-            <!-- Graded Courses -->
             <h3 style="color: var(--text-main); margin-top: 40px; margin-bottom: 20px;">Graded Graduate Coursework</h3>
             <div class="course-grid">
                 <div class="course-item">
@@ -594,7 +662,6 @@
                 </div>
             </div>
 
-            <!-- Audits -->
             <h3 style="color: var(--text-main); margin-top: 40px; margin-bottom: 20px;">Audit & Extra Courses</h3>
             <div class="course-grid">
                 <div class="course-item audit">
@@ -619,7 +686,6 @@
         <section id="experience">
             <h2>Work Experience</h2>
 
-            <!-- Job 1 -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-header">
@@ -637,7 +703,6 @@
                 </div>
             </div>
 
-            <!-- Job 2 -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-header">
@@ -655,7 +720,6 @@
                 </div>
             </div>
 
-            <!-- Job 3 -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-header">
@@ -721,19 +785,64 @@
             </div>
         </section>
 
-        <!-- CONTACT SECTION -->
+        <!-- NEW CONTACT SECTION -->
         <section id="contact">
             <h2>Contact</h2>
-            <div class="contact-card">
-                <a href="mailto:majidfa78@gmail.com" class="contact-link">
-                    <i class="fas fa-envelope fa-lg"></i> majidfa78@gmail.com
-                </a>
-                <a href="https://www.linkedin.com/in/majid-farajian-899a47297" target="_blank" class="contact-link">
-                    <i class="fab fa-linkedin fa-lg"></i> LinkedIn Profile
-                </a>
-                <a href="https://github.com/majidfa78" target="_blank" class="contact-link">
-                    <i class="fab fa-github fa-lg"></i> github.com/majidfa78
-                </a>
+            <p>I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.</p>
+            
+            <div class="contact-wrapper">
+                
+                <!-- Left Column: Social Image Links -->
+                <div class="social-grid">
+                    <a href="mailto:majidfa78@gmail.com" class="social-card">
+                        <div class="social-icon-box" style="background: #ea4335;">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="social-info">
+                            <h4>Email Me</h4>
+                            <span>majidfa78@gmail.com</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/in/majid-farajian-899a47297" target="_blank" class="social-card">
+                        <div class="social-icon-box" style="background: #0077b5;">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <div class="social-info">
+                            <h4>LinkedIn</h4>
+                            <span>Connect professionally</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://github.com/majidfa78" target="_blank" class="social-card">
+                        <div class="social-icon-box" style="background: #333;">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="social-info">
+                            <h4>GitHub</h4>
+                            <span>Check my repositories</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Right Column: Send Message Form -->
+                <div class="contact-form-container">
+                    <form action="mailto:majidfa78@gmail.com" method="post" enctype="text/plain">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" class="form-control" placeholder="Write your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
             </div>
         </section>
 
